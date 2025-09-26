@@ -1,105 +1,490 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Devendra — Software Engineer</title>
+  <meta name="description" content="Devendra Pratap Singh — software engineer (system design, backend, Java & Python)." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <head>
+  <style>
+    /* Simple, balanced styles (light + dark) */
+    :root{
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --accent: #14b8a6;
+      --radius: 14px;
+    }
+    [data-theme="dark"]{
+      --bg: #0b1220;
+      --card: #0f1724;
+      --text: #e6eef8;
+      --muted: #9aa6b2;
+      --accent: #5eead4;
+    }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
 
-    <title>Personal Space | DPS</title>
-<!--
-Elegance Template
-https://templatemo.com/tm-528-elegance
--->
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    .container{max-width:1080px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#14b8a6,#123524);color:white;font-weight:700}
+    .socials{display:flex;gap:10px;align-items:center}
+    .icon-btn{background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer;color:var(--muted);transition:color 0.2s ease}
+    .icon-btn:hover{color:var(--text)}
+    .socials a{transition:color 0.2s ease;color:var(--muted)}
+    .socials a:hover{color:var(--text)}
 
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    /* hero */
+    .hero{display:flex;flex-wrap:wrap;gap:24px;align-items:center;margin-top:28px}
+    .hero-left{flex:1;min-width:260px}
+    .hero-right{width:180px;height:180px;border-radius:16px;background:linear-gradient(135deg,#14b8a6,#123524);display:flex;align-items:center;justify-content:center;color:white}
+    h1{font-size:28px;margin:0}
+    p.lead{margin-top:12px;color:var(--muted)}
+    .cta{margin-top:16px;display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(100,100,120,0.08)}
 
-    <link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
+    /* cards */
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(11,17,26,0.06);border:1px solid rgba(0,0,0,0.03)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);font-size:13px;color:var(--muted)}
 
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+    /* sections */
+    section{margin-top:22px}
+    .two-col{display:grid;grid-template-columns:1fr 340px;gap:18px}
 
-    <link rel="stylesheet" href="css/animate.css">
+    /* projects list */
+    .project{padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,0.03);background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .project h3{margin:0;font-size:16px}
+    .project p{margin:8px 0 0;color:var(--muted);font-size:14px}
 
-    <link rel="stylesheet" href="css/templatemo-style.css">
+    /* work list */
+    ol{padding-left:18px;margin:8px 0;color:var(--muted)}
 
-    <link rel="stylesheet" href="css/responsive.css">
+    /* contact */
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:transparent;color:var(--text)}
+    textarea{min-height:120px}
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/favico//apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favico//favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favico//favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
 
-    </head>
+    /* services */
+    .services{display:flex;flex-direction:column;gap:12px}
+    .service-item{display:flex;align-items:flex-start;gap:12px}
+    .service-item h4{margin:0;font-size:15px}
+    .service-desc{color:var(--muted);font-size:14px;margin-top:4px}
 
-    <body>
+    /* responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(1,1fr)}
+      .two-col{grid-template-columns:1fr}
+      .socials{display:none}
+      
+      /* Mobile adjustments for detailed sections */
+      #about > div:first-child > div:first-child {
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:16px !important;
+      }
+      
+      #projects .project, #experience > div:last-child > div {
+        margin-bottom:16px;
+      }
+      
+      #projects .project > div:first-child,
+      #experience > div:last-child > div > div:first-child {
+        display:block !important;
+      }
+      
+      #projects .project > div:first-child > div:last-child,
+      #experience > div:last-child > div > div:first-child > div:last-child {
+        margin-top:8px !important;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
 
-    <div id="video">
-        <div class="preloader">
-            <div class="preloader-bounce">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">DP</div>
+        <div>
+          <div style="font-weight:700">Devendra Pratap Singh</div>
+          <div style="font-size:13px;color:var(--muted)">Software Engineer • System Design • Java & Python</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <!-- Theme toggle as an icon (sun / moon) -->
+        <button id="themeBtn" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+          <!-- moon icon initially (for dark toggle) -->
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <!-- social links -->
+        <div class="socials" aria-hidden="false">
+          <a href="#" title="LinkedIn" aria-label="LinkedIn" style="text-decoration:none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="#" title="GitHub" aria-label="GitHub" style="text-decoration:none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+          </a>
+          <a href="#" title="X / Twitter" aria-label="X" style="text-decoration:none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <h1>I build scalable systems & explain them clearly.</h1>
+          <p class="lead">Engineer focused on backend services, system design, and developer-friendly documentation. I prefer pragmatic trade-offs and clean architecture.</p>
+
+          <div class="cta">
+            <a href="#services" class="btn btn-primary">Services on Topmate</a>
+            <a href="#contact" class="btn btn-ghost">Let's talk</a>
+          </div>
+
+          <div style="margin-top:12px;font-size:13px;color:var(--muted)">Based in India • Vegetarian • Loves clear diagrams & concise explanations</div>
         </div>
 
-        <header id="header">
-            <div class="container-fluid">
-                <div class="navbar">
-                    <a href="javascript:void(0);" id="logo" title="Devendra Pratap Singh">
-                        # Devendra Pratap Singh
-                    </a>
-                </div>
-            </div>
-        </header>
+        <div class="hero-right">Your Photo<br/><small style="opacity:0.9">or Avatar</small></div>
+      </section>
 
-        <div id="fullpage" class="fullpage-default">
-
-            <div class="section animated-row" data-section="slide01">
-                <div class="section-inner">
-                    <div class="welcome-box">
-                        <span class="welcome-first animate" data-animate="fadeInUp">Hello, I am</span>
-                        <h1 class="welcome-title animate" data-animate="fadeInUp">DPS</h1>
-                        <p class="animate" data-animate="fadeInUp">Welcome traveler to my site. Currently it is underconstruction, meanwhile you can follow me on various social media. Thank You.</p>
-
-                    </div>
-                </div>
-            </div>
+      <!-- Services section (Topmate offerings) -->
+      <section id="services" class="card" style="margin-top:18px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-weight:700">Services I offer on Topmate</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Book on Topmate</a>
+          </div>
         </div>
 
-        <div id="social-icons">
-            <div class="text-right">
-                <ul class="social-icons">
-                    <li><a href="https://github.com/devendrapratap02/" title="Github"><i class="fa fa-github"></i></a></li>
-                    <li><a href="https://twitter.com/_devendrapratap/" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/devendrapratap/" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="https://www.instagram.com/devendrapratap02/" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="https://www.facebook.com/devendrapratap02/" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                </ul>
+        <div class="services" style="margin-top:12px">
+          <div class="service-item">
+            <div style="width:34px;height:34px;border-radius:8px;background:rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">MI</div>
+            <div>
+              <h4>Mock Interviews (60 min)</h4>
+              <div class="service-desc">Live, structured mock interviews with feedback — system design rounds, backend, and Java/Python deep dives. Includes written notes and improvement plan.</div>
             </div>
+          </div>
+
+          <div class="service-item">
+            <div style="width:34px;height:34px;border-radius:8px;background:rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">1-1</div>
+            <div>
+              <h4>One-on-One Mentorship (30/60 min)</h4>
+              <div class="service-desc">Focused sessions for career guidance, system design walkthroughs, and code review with actionable suggestions.</div>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <div style="width:34px;height:34px;border-radius:8px;background:rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">QD</div>
+            <div>
+              <h4>Quick Doubt Call (15–20 min)</h4>
+              <div class="service-desc">Short, focused calls to clear a single problem — debugging help, architecture questions, interview doubt clarifications.</div>
+            </div>
+          </div>
         </div>
-    </div>
+      </section>
 
-    <script src="js/jquery.js"></script>
+      <!-- About / Projects / Work as subtle cards without main headers -->
+      <!-- <section style="margin-top:18px">
+        <div class="grid">
+          <div class="card">
+            <div style="font-size:13px;color:var(--muted)">About</div>
+            <div style="font-weight:600;margin-top:6px">I turn ambiguous problems into reliable systems. My work spans backend services, database design, and developer tooling.</div>
+          </div>
 
-    <script src="js/bootstrap.min.js"></script>
+          <div class="card">
+            <div style="font-size:13px;color:var(--muted)">Selected Project</div>
+            <div style="font-weight:600;margin-top:6px">Feed Generator — Scalable feed generation with real-time ranking and caching.</div>
+          </div>
 
-    <script src="js/fullpage.min.js"></script>
+          <div class="card">
+            <div style="font-size:13px;color:var(--muted)">Experience</div>
+            <div style="font-weight:600;margin-top:6px">Senior Backend Engineer — designed systems for low latency and maintainability.</div>
+          </div>
+        </div>
+      </section> -->
 
-    <script src="js/scrolloverflow.js"></script>
+      <!-- Detailed About Section -->
+      <section id="about" class="card" style="margin-top:18px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <div>
+            <div style="font-weight:700;font-size:20px">About Me</div>
+            <div style="color:var(--muted);font-size:14px;margin-top:4px">Building scalable systems with clean architecture</div>
+          </div>
+        </div>
+        
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:start">
+          <div>
+            <p style="margin:0 0 16px 0;line-height:1.6">
+              I'm a software engineer specializing in backend systems, system design, and scalable architecture. 
+              With expertise in Java and Python, I focus on building reliable, maintainable systems that can 
+              handle real-world complexity.
+            </p>
+            <p style="margin:0 0 16px 0;line-height:1.6">
+              My approach emphasizes pragmatic trade-offs, clear documentation, and developer experience. 
+              I believe in writing code that not only works today but remains understandable and extensible 
+              as requirements evolve.
+            </p>
+            <p style="margin:0;line-height:1.6">
+              When I'm not coding, you'll find me exploring new technologies, contributing to open source, 
+              or sharing knowledge through technical writing and mentoring.
+            </p>
+          </div>
+          
+          <div>
+            <div style="margin-bottom:16px">
+              <h4 style="margin:0 0 8px 0;font-size:14px;color:var(--muted)">Core Technologies</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="chip">Java</span>
+                <span class="chip">Python</span>
+                <span class="chip">Spring Boot</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">Redis</span>
+                <span class="chip">Docker</span>
+              </div>
+            </div>
+            
+            <div>
+              <h4 style="margin:0 0 8px 0;font-size:14px;color:var(--muted)">Interests</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="chip">System Design</span>
+                <span class="chip">Microservices</span>
+                <span class="chip">Performance</span>
+                <span class="chip">DevOps</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <script src="js/owl.carousel.min.js"></script>
+      <!-- Detailed Projects Section -->
+      <section id="projects" class="card" style="margin-top:18px">
+        <div style="margin-bottom:20px">
+          <div style="font-weight:700;font-size:20px">Featured Projects</div>
+          <div style="color:var(--muted);font-size:14px;margin-top:4px">A selection of projects showcasing system design and engineering skills</div>
+        </div>
 
-    <script src="js/jquery.inview.min.js"></script>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="project">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              <h3>Scalable Feed Generation System</h3>
+              <div style="display:flex;gap:6px">
+                <span class="chip">Java</span>
+                <span class="chip">Redis</span>
+                <span class="chip">Kafka</span>
+              </div>
+            </div>
+            <p>Built a high-throughput feed generation system handling 10M+ daily requests. Implemented real-time ranking algorithms, 
+               distributed caching, and event-driven architecture to ensure sub-200ms response times.</p>
+            <div style="margin-top:8px;font-size:13px;color:var(--muted)">
+              Key achievements: 60% reduction in latency, 5x increase in throughput, zero-downtime deployments
+            </div>
+          </div>
 
-    <script src="js/form.js"></script>
+          <div class="project">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              <h3>Microservices Platform Migration</h3>
+              <div style="display:flex;gap:6px">
+                <span class="chip">Spring Boot</span>
+                <span class="chip">Docker</span>
+                <span class="chip">Kubernetes</span>
+              </div>
+            </div>
+            <p>Led migration from monolithic architecture to microservices, designing service boundaries, implementing 
+               circuit breakers, and establishing observability practices across 15+ services.</p>
+            <div style="margin-top:8px;font-size:13px;color:var(--muted)">
+              Impact: Improved deployment frequency by 400%, reduced MTTR by 75%
+            </div>
+          </div>
 
-    <script src="js/custom.js"></script>
+          <div class="project">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              <h3>Real-time Analytics Pipeline</h3>
+              <div style="display:flex;gap:6px">
+                <span class="chip">Python</span>
+                <span class="chip">Apache Spark</span>
+                <span class="chip">ClickHouse</span>
+              </div>
+            </div>
+            <p>Developed real-time data processing pipeline for business analytics, handling 1TB+ daily data volume. 
+               Built custom aggregation engine with time-series optimization and automated alerting.</p>
+            <div style="margin-top:8px;font-size:13px;color:var(--muted)">
+              Result: Real-time insights reduced from hours to minutes, 99.9% data accuracy
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- Detailed Experience Section -->
+      <section id="experience" class="card" style="margin-top:18px">
+        <div style="margin-bottom:20px">
+          <div style="font-weight:700;font-size:20px">Professional Experience</div>
+          <div style="color:var(--muted);font-size:14px;margin-top:4px">Building scalable systems and leading technical initiatives</div>
+        </div>
 
-  </body>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="border-left:3px solid var(--accent);padding-left:16px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              <div>
+                <h3 style="margin:0;font-size:16px">Senior Backend Engineer</h3>
+                <div style="color:var(--accent);font-size:14px;margin-top:2px">Tech Solutions Inc.</div>
+              </div>
+              <div style="font-size:13px;color:var(--muted)">2022 - Present</div>
+            </div>
+            
+            <div style="margin-bottom:12px">
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="chip">Java</span>
+                <span class="chip">Spring Boot</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">Redis</span>
+                <span class="chip">Kubernetes</span>
+              </div>
+            </div>
+            
+            <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px">
+              <li>Architected and implemented microservices platform serving 50M+ requests daily</li>
+              <li>Led technical design reviews and mentored junior developers</li>
+              <li>Reduced system latency by 60% through optimization and caching strategies</li>
+              <li>Established monitoring and alerting practices improving system reliability to 99.9%</li>
+            </ul>
+          </div>
+
+          <div style="border-left:3px solid var(--accent);padding-left:16px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              <div>
+                <h3 style="margin:0;font-size:16px">Backend Developer</h3>
+                <div style="color:var(--accent);font-size:14px;margin-top:2px">Innovation Labs</div>
+              </div>
+              <div style="font-size:13px;color:var(--muted)">2020 - 2022</div>
+            </div>
+            
+            <div style="margin-bottom:12px">
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="chip">Python</span>
+                <span class="chip">Django</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">AWS</span>
+              </div>
+            </div>
+            
+            <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px">
+              <li>Built RESTful APIs and background processing systems</li>
+              <li>Implemented automated testing and CI/CD pipelines</li>
+              <li>Collaborated with frontend teams to deliver end-to-end features</li>
+              <li>Optimized database queries reducing response times by 40%</li>
+            </ul>
+          </div>
+
+          <div style="border-left:3px solid var(--accent);padding-left:16px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              <div>
+                <h3 style="margin:0;font-size:16px">Software Engineer</h3>
+                <div style="color:var(--accent);font-size:14px;margin-top:2px">StartupCo</div>
+              </div>
+              <div style="font-size:13px;color:var(--muted)">2019 - 2020</div>
+            </div>
+            
+            <div style="margin-bottom:12px">
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="chip">Java</span>
+                <span class="chip">Spring</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Docker</span>
+              </div>
+            </div>
+            
+            <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px">
+              <li>Developed core platform features from requirements to deployment</li>
+              <li>Participated in code reviews and technical discussions</li>
+              <li>Maintained and improved existing codebase</li>
+              <li>Learned system design principles in fast-paced startup environment</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="card" style="margin-top:18px">
+        <div style="text-align:center">
+          <div style="font-weight:700;font-size:20px;margin-bottom:8px">Get In Touch</div>
+          <p style="color:var(--muted);margin:0 0 20px 0">Open to freelance projects, collaborations, and interesting conversations</p>
+          
+          <div style="display:flex;justify-content:center;gap:12px;margin-bottom:20px">
+            <a href="#" title="LinkedIn" aria-label="LinkedIn" style="text-decoration:none">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href="#" title="GitHub" aria-label="GitHub" style="text-decoration:none">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+            <a href="#" title="X / Twitter" aria-label="X" style="text-decoration:none">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.080l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+          </div>
+          
+          <div style="display:flex;justify-content:center;gap:12px">
+            <a href="mailto:youremail@example.com" class="btn btn-primary">Email Me</a>
+            <a href="/resume.pdf" class="btn btn-ghost">Download Resume</a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Devendra — Built with clarity. • <a href="#">Privacy</a>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Insert current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (icon) — swaps sun/moon icon and data-theme attribute
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const root = document.body;
+    let theme = 'light';
+
+    function setIcon(t) {
+      // t: 'light' means show moon (to switch to dark), 'dark' shows sun
+      if (t === 'light') {
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'; // moon
+      } else {
+        themeIcon.innerHTML = '<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4M7 12a5 5 0 1 0 10 0a5 5 0 0 0-10 0z"/>'; // sun
+      }
+    }
+
+    setIcon(theme);
+    themeBtn.addEventListener('click', () => {
+      theme = theme === 'light' ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', theme);
+      setIcon(theme);
+    });
+  </script>
+</body>
 </html>
