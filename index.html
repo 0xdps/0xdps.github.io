@@ -113,7 +113,7 @@
   <div class="container">
     <header>
       <div class="brand">
-        <div class="logo">DP</div>
+        <div class="logo">DPS</div>
         <div>
           <div style="font-weight:700">Devendra Pratap Singh</div>
           <div style="font-size:13px;color:var(--muted)">Software Engineer • System Design • Java & Python</div>
@@ -155,312 +155,466 @@
           <p class="lead">Engineer focused on backend services, system design, and developer-friendly documentation. I prefer pragmatic trade-offs and clean architecture.</p>
 
           <div class="cta">
-            <a href="#services" class="btn btn-primary">Services on Topmate</a>
-            <a href="#contact" class="btn btn-ghost">Let's talk</a>
+            <a href="mailto:youremail@example.com" class="btn btn-primary">Email Me</a>
+            <a href="/resume.pdf" class="btn btn-ghost">Download Resume</a>
           </div>
 
           <div style="margin-top:12px;font-size:13px;color:var(--muted)">Based in India • Vegetarian • Loves clear diagrams & concise explanations</div>
         </div>
 
-        <div class="hero-right">Your Photo<br/><small style="opacity:0.9">or Avatar</small></div>
+        <div class="hero-right" style="background-image:url('profile.jpg');background-size:cover;background-position:center;"></div>
       </section>
 
-      <!-- Services section (Topmate offerings) -->
-      <section id="services" class="card" style="margin-top:18px">
-        <div style="display:flex;align-items:center;justify-content:space-between">
-          <div>
-            <div style="font-weight:700">Services I offer on Topmate</div>
-            <div style="color:var(--muted);font-size:13px;margin-top:6px">Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.</div>
-          </div>
-          <div style="display:flex;gap:8px;align-items:center">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Book on Topmate</a>
-          </div>
-        </div>
-
-        <div class="services" style="margin-top:12px">
-          <div class="service-item">
-            <div style="width:34px;height:34px;border-radius:8px;background:rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">MI</div>
+      <!-- Hidden Templates -->
+      <div style="display: none;">
+        <!-- Services Template -->
+        <section id="services-template" class="card" style="margin-top:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
             <div>
-              <h4>Mock Interviews (60 min)</h4>
-              <div class="service-desc">Live, structured mock interviews with feedback — system design rounds, backend, and Java/Python deep dives. Includes written notes and improvement plan.</div>
+              <div style="font-weight:700" data-field="title">Services I offer on Topmate</div>
+              <div style="color:var(--muted);font-size:13px;margin-top:6px" data-field="subtitle">Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.</div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <a class="btn btn-primary" href="#" target="_blank" rel="noopener" data-field="topmateUrl">Book on Topmate</a>
             </div>
           </div>
 
-          <div class="service-item">
-            <div style="width:34px;height:34px;border-radius:8px;background:rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">1-1</div>
-            <div>
-              <h4>One-on-One Mentorship (30/60 min)</h4>
-              <div class="service-desc">Focused sessions for career guidance, system design walkthroughs, and code review with actionable suggestions.</div>
-            </div>
+          <div class="services" style="margin-top:12px" data-field="services-container">
+            <!-- Services populated by JavaScript -->
           </div>
+        </section>
 
-          <div class="service-item">
-            <div style="width:34px;height:34px;border-radius:8px;background:rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">QD</div>
-            <div>
-              <h4>Quick Doubt Call (15–20 min)</h4>
-              <div class="service-desc">Short, focused calls to clear a single problem — debugging help, architecture questions, interview doubt clarifications.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About / Projects / Work as subtle cards without main headers -->
-      <!-- <section style="margin-top:18px">
-        <div class="grid">
-          <div class="card">
-            <div style="font-size:13px;color:var(--muted)">About</div>
-            <div style="font-weight:600;margin-top:6px">I turn ambiguous problems into reliable systems. My work spans backend services, database design, and developer tooling.</div>
-          </div>
-
-          <div class="card">
-            <div style="font-size:13px;color:var(--muted)">Selected Project</div>
-            <div style="font-weight:600;margin-top:6px">Feed Generator — Scalable feed generation with real-time ranking and caching.</div>
-          </div>
-
-          <div class="card">
-            <div style="font-size:13px;color:var(--muted)">Experience</div>
-            <div style="font-weight:600;margin-top:6px">Senior Backend Engineer — designed systems for low latency and maintainability.</div>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- Detailed About Section -->
-      <section id="about" class="card" style="margin-top:18px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <!-- Service Item Template -->
+        <div class="service-item" id="service-item-template">
+          <div style="width:34px;height:34px;border-radius:8px;background:rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)" data-field="icon">MI</div>
           <div>
-            <div style="font-weight:700;font-size:20px">About Me</div>
-            <div style="color:var(--muted);font-size:14px;margin-top:4px">Building scalable systems with clean architecture</div>
+            <h4 data-field="title">Mock Interviews (60 min)</h4>
+            <div class="service-desc" data-field="description">Live, structured mock interviews with feedback — system design rounds, backend, and Java/Python deep dives. Includes written notes and improvement plan.</div>
           </div>
         </div>
-        
-        <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:start">
-          <div>
-            <p style="margin:0 0 16px 0;line-height:1.6">
-              I'm a software engineer specializing in backend systems, system design, and scalable architecture. 
-              With expertise in Java and Python, I focus on building reliable, maintainable systems that can 
-              handle real-world complexity.
-            </p>
-            <p style="margin:0 0 16px 0;line-height:1.6">
-              My approach emphasizes pragmatic trade-offs, clear documentation, and developer experience. 
-              I believe in writing code that not only works today but remains understandable and extensible 
-              as requirements evolve.
-            </p>
-            <p style="margin:0;line-height:1.6">
-              When I'm not coding, you'll find me exploring new technologies, contributing to open source, 
-              or sharing knowledge through technical writing and mentoring.
-            </p>
+
+        <!-- About Template -->
+        <section id="about-template" class="card" style="margin-top:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div>
+              <div style="font-weight:700;font-size:20px" data-field="title">About Me</div>
+              <div style="color:var(--muted);font-size:14px;margin-top:4px" data-field="subtitle">Building scalable systems with clean architecture</div>
+            </div>
           </div>
           
-          <div>
-            <div style="margin-bottom:16px">
-              <h4 style="margin:0 0 8px 0;font-size:14px;color:var(--muted)">Core Technologies</h4>
-              <div style="display:flex;flex-wrap:wrap;gap:6px">
-                <span class="chip">Java</span>
-                <span class="chip">Python</span>
-                <span class="chip">Spring Boot</span>
-                <span class="chip">PostgreSQL</span>
-                <span class="chip">Redis</span>
-                <span class="chip">Docker</span>
-              </div>
+          <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:start">
+            <div data-field="description-container">
+              <p style="margin:0 0 16px 0;line-height:1.6">Description paragraphs will be inserted here</p>
             </div>
             
             <div>
-              <h4 style="margin:0 0 8px 0;font-size:14px;color:var(--muted)">Interests</h4>
-              <div style="display:flex;flex-wrap:wrap;gap:6px">
-                <span class="chip">System Design</span>
-                <span class="chip">Microservices</span>
-                <span class="chip">Performance</span>
-                <span class="chip">DevOps</span>
+              <div style="margin-bottom:16px">
+                <h4 style="margin:0 0 8px 0;font-size:14px;color:var(--muted)">Core Technologies</h4>
+                <div style="display:flex;flex-wrap:wrap;gap:6px" data-field="technologies">
+                  <!-- Technologies populated by JavaScript -->
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Detailed Projects Section -->
-      <section id="projects" class="card" style="margin-top:18px">
-        <div style="margin-bottom:20px">
-          <div style="font-weight:700;font-size:20px">Featured Projects</div>
-          <div style="color:var(--muted);font-size:14px;margin-top:4px">A selection of projects showcasing system design and engineering skills</div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div class="project">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <h3>Scalable Feed Generation System</h3>
-              <div style="display:flex;gap:6px">
-                <span class="chip">Java</span>
-                <span class="chip">Redis</span>
-                <span class="chip">Kafka</span>
-              </div>
-            </div>
-            <p>Built a high-throughput feed generation system handling 10M+ daily requests. Implemented real-time ranking algorithms, 
-               distributed caching, and event-driven architecture to ensure sub-200ms response times.</p>
-            <div style="margin-top:8px;font-size:13px;color:var(--muted)">
-              Key achievements: 60% reduction in latency, 5x increase in throughput, zero-downtime deployments
-            </div>
-          </div>
-
-          <div class="project">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <h3>Microservices Platform Migration</h3>
-              <div style="display:flex;gap:6px">
-                <span class="chip">Spring Boot</span>
-                <span class="chip">Docker</span>
-                <span class="chip">Kubernetes</span>
-              </div>
-            </div>
-            <p>Led migration from monolithic architecture to microservices, designing service boundaries, implementing 
-               circuit breakers, and establishing observability practices across 15+ services.</p>
-            <div style="margin-top:8px;font-size:13px;color:var(--muted)">
-              Impact: Improved deployment frequency by 400%, reduced MTTR by 75%
-            </div>
-          </div>
-
-          <div class="project">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <h3>Real-time Analytics Pipeline</h3>
-              <div style="display:flex;gap:6px">
-                <span class="chip">Python</span>
-                <span class="chip">Apache Spark</span>
-                <span class="chip">ClickHouse</span>
-              </div>
-            </div>
-            <p>Developed real-time data processing pipeline for business analytics, handling 1TB+ daily data volume. 
-               Built custom aggregation engine with time-series optimization and automated alerting.</p>
-            <div style="margin-top:8px;font-size:13px;color:var(--muted)">
-              Result: Real-time insights reduced from hours to minutes, 99.9% data accuracy
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Detailed Experience Section -->
-      <section id="experience" class="card" style="margin-top:18px">
-        <div style="margin-bottom:20px">
-          <div style="font-weight:700;font-size:20px">Professional Experience</div>
-          <div style="color:var(--muted);font-size:14px;margin-top:4px">Building scalable systems and leading technical initiatives</div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:20px">
-          <div style="border-left:3px solid var(--accent);padding-left:16px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+              
               <div>
-                <h3 style="margin:0;font-size:16px">Senior Backend Engineer</h3>
-                <div style="color:var(--accent);font-size:14px;margin-top:2px">Tech Solutions Inc.</div>
-              </div>
-              <div style="font-size:13px;color:var(--muted)">2022 - Present</div>
-            </div>
-            
-            <div style="margin-bottom:12px">
-              <div style="display:flex;flex-wrap:wrap;gap:6px">
-                <span class="chip">Java</span>
-                <span class="chip">Spring Boot</span>
-                <span class="chip">PostgreSQL</span>
-                <span class="chip">Redis</span>
-                <span class="chip">Kubernetes</span>
+                <h4 style="margin:0 0 8px 0;font-size:14px;color:var(--muted)">Interests</h4>
+                <div style="display:flex;flex-wrap:wrap;gap:6px" data-field="interests">
+                  <!-- Interests populated by JavaScript -->
+                </div>
               </div>
             </div>
-            
-            <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px">
-              <li>Architected and implemented microservices platform serving 50M+ requests daily</li>
-              <li>Led technical design reviews and mentored junior developers</li>
-              <li>Reduced system latency by 60% through optimization and caching strategies</li>
-              <li>Established monitoring and alerting practices improving system reliability to 99.9%</li>
-            </ul>
+          </div>
+        </section>
+
+        <!-- Projects Template -->
+        <section id="projects-template" class="card" style="margin-top:18px">
+          <div style="margin-bottom:20px">
+            <div style="font-weight:700;font-size:20px" data-field="title">Featured Projects</div>
+            <div style="color:var(--muted);font-size:14px;margin-top:4px" data-field="subtitle">A selection of projects showcasing system design and engineering skills</div>
           </div>
 
-          <div style="border-left:3px solid var(--accent);padding-left:16px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div>
-                <h3 style="margin:0;font-size:16px">Backend Developer</h3>
-                <div style="color:var(--accent);font-size:14px;margin-top:2px">Innovation Labs</div>
-              </div>
-              <div style="font-size:13px;color:var(--muted)">2020 - 2022</div>
-            </div>
-            
-            <div style="margin-bottom:12px">
-              <div style="display:flex;flex-wrap:wrap;gap:6px">
-                <span class="chip">Python</span>
-                <span class="chip">Django</span>
-                <span class="chip">PostgreSQL</span>
-                <span class="chip">AWS</span>
-              </div>
-            </div>
-            
-            <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px">
-              <li>Built RESTful APIs and background processing systems</li>
-              <li>Implemented automated testing and CI/CD pipelines</li>
-              <li>Collaborated with frontend teams to deliver end-to-end features</li>
-              <li>Optimized database queries reducing response times by 40%</li>
-            </ul>
+          <div style="display:flex;flex-direction:column;gap:16px" data-field="projects-container">
+            <!-- Projects populated by JavaScript -->
           </div>
+        </section>
 
-          <div style="border-left:3px solid var(--accent);padding-left:16px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div>
-                <h3 style="margin:0;font-size:16px">Software Engineer</h3>
-                <div style="color:var(--accent);font-size:14px;margin-top:2px">StartupCo</div>
-              </div>
-              <div style="font-size:13px;color:var(--muted)">2019 - 2020</div>
+        <!-- Project Item Template -->
+        <div class="project" id="project-item-template">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+            <h3 data-field="title">Scalable Feed Generation System</h3>
+            <div style="display:flex;gap:6px" data-field="technologies">
+              <!-- Technologies populated by JavaScript -->
             </div>
-            
-            <div style="margin-bottom:12px">
-              <div style="display:flex;flex-wrap:wrap;gap:6px">
-                <span class="chip">Java</span>
-                <span class="chip">Spring</span>
-                <span class="chip">MySQL</span>
-                <span class="chip">Docker</span>
-              </div>
-            </div>
-            
-            <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px">
-              <li>Developed core platform features from requirements to deployment</li>
-              <li>Participated in code reviews and technical discussions</li>
-              <li>Maintained and improved existing codebase</li>
-              <li>Learned system design principles in fast-paced startup environment</li>
-            </ul>
+          </div>
+          <p data-field="description">Built a high-throughput feed generation system handling 10M+ daily requests.</p>
+          <div style="margin-top:8px;font-size:13px;color:var(--muted)" data-field="achievements">
+            Key achievements: 60% reduction in latency, 5x increase in throughput, zero-downtime deployments
           </div>
         </div>
-      </section>
 
-      <section id="contact" class="card" style="margin-top:18px">
-        <div style="text-align:center">
-          <div style="font-weight:700;font-size:20px;margin-bottom:8px">Get In Touch</div>
-          <p style="color:var(--muted);margin:0 0 20px 0">Open to freelance projects, collaborations, and interesting conversations</p>
-          
-          <div style="display:flex;justify-content:center;gap:12px;margin-bottom:20px">
-            <a href="#" title="LinkedIn" aria-label="LinkedIn" style="text-decoration:none">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-            <a href="#" title="GitHub" aria-label="GitHub" style="text-decoration:none">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-              </svg>
-            </a>
-            <a href="#" title="X / Twitter" aria-label="X" style="text-decoration:none">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.080l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </a>
+        <!-- Experience Template -->
+        <section id="experience-template" class="card" style="margin-top:18px">
+          <div style="margin-bottom:20px">
+            <div style="font-weight:700;font-size:20px" data-field="title">Professional Experience</div>
+            <div style="color:var(--muted);font-size:14px;margin-top:4px" data-field="subtitle">Building scalable systems and leading technical initiatives</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:20px" data-field="experience-container">
+            <!-- Experience items populated by JavaScript -->
+          </div>
+        </section>
+
+        <!-- Experience Item Template -->
+        <div style="border-left:3px solid var(--accent);padding-left:16px" id="experience-item-template">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+            <div>
+              <h3 style="margin:0;font-size:16px" data-field="role">Senior Backend Engineer</h3>
+              <div style="color:var(--accent);font-size:14px;margin-top:2px" data-field="company">Tech Solutions Inc.</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted)" data-field="period">2022 - Present</div>
           </div>
           
-          <div style="display:flex;justify-content:center;gap:12px">
-            <a href="mailto:youremail@example.com" class="btn btn-primary">Email Me</a>
-            <a href="/resume.pdf" class="btn btn-ghost">Download Resume</a>
+          <div style="margin-bottom:12px">
+            <div style="display:flex;flex-wrap:wrap;gap:6px" data-field="technologies">
+              <!-- Technologies populated by JavaScript -->
+            </div>
           </div>
+          
+          <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px" data-field="achievements">
+            <!-- Achievements populated by JavaScript -->
+          </ul>
         </div>
-      </section>
+      </div>
+
+      <!-- Containers for populated content -->
+      <div id="services-container"></div>
+      <div id="about-container"></div>
+      <div id="projects-container"></div>
+      <div id="experience-container"></div>
 
       <footer>
-        © <span id="year"></span> Devendra — Built with clarity. • <a href="#">Privacy</a>
+        © <span id="year"></span> Devendra — Built with clarity. • <a href="#privacy" onclick="togglePrivacy()">Privacy</a>
       </footer>
+
+      <!-- Privacy Modal/Section (hidden by default) -->
+      <div id="privacy-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1000;">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card);padding:32px;border-radius:16px;max-width:600px;max-height:80vh;overflow-y:auto;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h2 style="margin:0;color:var(--text)">Privacy Policy</h2>
+            <button onclick="togglePrivacy()" style="background:none;border:none;font-size:24px;cursor:pointer;color:var(--muted)">&times;</button>
+          </div>
+          
+          <div style="color:var(--text);line-height:1.6;">
+            <p><strong>Last updated:</strong> <span id="privacy-date"></span></p>
+            
+            <h3 style="color:var(--accent);margin-top:24px;margin-bottom:12px;">Information Collection</h3>
+            <p>This website is a static portfolio site. I don't collect, store, or process any personal data. No cookies, analytics, or tracking scripts are used.</p>
+            
+            <h3 style="color:var(--accent);margin-top:24px;margin-bottom:12px;">Contact Information</h3>
+            <p>When you contact me via email or social media links, your communication is handled according to the respective platform's privacy policies (Gmail, LinkedIn, GitHub, etc.).</p>
+            
+            <h3 style="color:var(--accent);margin-top:24px;margin-bottom:12px;">Third-Party Services</h3>
+            <p>This site may link to external services (Topmate, social media platforms). These services have their own privacy policies which govern their data handling practices.</p>
+            
+            <h3 style="color:var(--accent);margin-top:24px;margin-bottom:12px;">Data Security</h3>
+            <p>Since no personal data is collected or stored on this website, there are no data security concerns related to this site specifically.</p>
+            
+            <h3 style="color:var(--accent);margin-top:24px;margin-bottom:12px;">Changes to Privacy Policy</h3>
+            <p>Any updates to this privacy policy will be reflected on this page with a new "last updated" date.</p>
+            
+            <h3 style="color:var(--accent);margin-top:24px;margin-bottom:12px;">Contact</h3>
+            <p>For privacy-related questions, contact me at: <a href="mailto:youremail@example.com" style="color:var(--accent)">youremail@example.com</a></p>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 
   <script>
+    // Site data in JSON format for easy management
+    const siteData = {
+      personal: {
+        name: "Devendra Pratap Singh",
+        title: "Software Engineer • System Design • Java & Python",
+        logo: "DPS",
+        tagline: "I build scalable systems & explain them clearly.",
+        description: "Engineer focused on backend services, system design, and developer-friendly documentation. I prefer pragmatic trade-offs and clean architecture.",
+        location: "Based in India • Vegetarian • Loves clear diagrams & concise explanations",
+        email: "youremail@example.com",
+        resumeUrl: "/resume.pdf"
+      },
+      
+      about: {
+        title: "About Me",
+        subtitle: "Building scalable systems with clean architecture",
+        description: [
+          "I'm a software engineer specializing in backend systems, system design, and scalable architecture. With expertise in Java and Python, I focus on building reliable, maintainable systems that can handle real-world complexity.",
+          "My approach emphasizes pragmatic trade-offs, clear documentation, and developer experience. I believe in writing code that not only works today but remains understandable and extensible as requirements evolve.",
+          "When I'm not coding, you'll find me exploring new technologies, contributing to open source, or sharing knowledge through technical writing and mentoring."
+        ],
+        technologies: ["Java", "Python", "Spring Boot", "PostgreSQL", "Redis", "Docker"],
+        interests: ["System Design", "Microservices", "Performance", "DevOps"]
+      },
+
+      services: {
+        title: "Services I offer on Topmate",
+        subtitle: "Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.",
+        topmateUrl: "#",
+        offerings: [
+          {
+            icon: "MI",
+            title: "Mock Interviews (60 min)",
+            description: "Live, structured mock interviews with feedback — system design rounds, backend, and Java/Python deep dives. Includes written notes and improvement plan."
+          },
+          {
+            icon: "1-1",
+            title: "One-on-One Mentorship (30/60 min)",
+            description: "Focused sessions for career guidance, system design walkthroughs, and code review with actionable suggestions."
+          },
+          {
+            icon: "QD",
+            title: "Quick Doubt Call (15–20 min)",
+            description: "Short, focused calls to clear a single problem — debugging help, architecture questions, interview doubt clarifications."
+          }
+        ]
+      },
+
+      projects: {
+        title: "Featured Projects",
+        subtitle: "A selection of projects showcasing system design and engineering skills",
+        items: [
+          {
+            title: "Scalable Feed Generation System",
+            technologies: ["Java", "Redis", "Kafka"],
+            description: "Built a high-throughput feed generation system handling 10M+ daily requests. Implemented real-time ranking algorithms, distributed caching, and event-driven architecture to ensure sub-200ms response times.",
+            achievements: "Key achievements: 60% reduction in latency, 5x increase in throughput, zero-downtime deployments"
+          },
+          {
+            title: "Microservices Platform Migration",
+            technologies: ["Spring Boot", "Docker", "Kubernetes"],
+            description: "Led migration from monolithic architecture to microservices, designing service boundaries, implementing circuit breakers, and establishing observability practices across 15+ services.",
+            achievements: "Impact: Improved deployment frequency by 400%, reduced MTTR by 75%"
+          },
+          {
+            title: "Real-time Analytics Pipeline",
+            technologies: ["Python", "Apache Spark", "ClickHouse"],
+            description: "Developed real-time data processing pipeline for business analytics, handling 1TB+ daily data volume. Built custom aggregation engine with time-series optimization and automated alerting.",
+            achievements: "Result: Real-time insights reduced from hours to minutes, 99.9% data accuracy"
+          }
+        ]
+      },
+
+      experience: {
+        title: "Professional Experience",
+        subtitle: "Building scalable systems and leading technical initiatives",
+        items: [
+          {
+            role: "Senior Backend Engineer",
+            company: "Tech Solutions Inc.",
+            period: "2022 - Present",
+            technologies: ["Java", "Spring Boot", "PostgreSQL", "Redis", "Kubernetes"],
+            achievements: [
+              "Architected and implemented microservices platform serving 50M+ requests daily",
+              "Led technical design reviews and mentored junior developers",
+              "Reduced system latency by 60% through optimization and caching strategies",
+              "Established monitoring and alerting practices improving system reliability to 99.9%"
+            ]
+          },
+          {
+            role: "Backend Developer",
+            company: "Innovation XYZ",
+            period: "2020 - 2022",
+            technologies: ["Python", "Django", "PostgreSQL", "AWS"],
+            achievements: [
+              "Built RESTful APIs and background processing systems",
+              "Implemented automated testing and CI/CD pipelines",
+              "Collaborated with frontend teams to deliver end-to-end features",
+              "Optimized database queries reducing response times by 40%"
+            ]
+          },
+          {
+            role: "Software Engineer",
+            company: "StartupCo",
+            period: "2019 - 2020",
+            technologies: ["Java", "Spring", "MySQL", "Docker"],
+            achievements: [
+              "Developed core platform features from requirements to deployment",
+              "Participated in code reviews and technical discussions",
+              "Maintained and improved existing codebase",
+              "Learned system design principles in fast-paced startup environment"
+            ]
+          }
+        ]
+      },
+
+      socialLinks: [
+        { name: "LinkedIn", url: "#", icon: "linkedin" },
+        { name: "GitHub", url: "#", icon: "github" },
+        { name: "Twitter", url: "#", icon: "twitter" },
+        { name: "Medium", url: "#", icon: "medium" }
+      ]
+    };
+
+    // Function to create chips/tags
+    function createChip(text) {
+      return `<span class="chip">${text}</span>`;
+    }
+
+    // Function to create social icons
+    function createSocialIcon(link) {
+      const icons = {
+        linkedin: '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>',
+        github: '<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>',
+        twitter: '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.080l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
+        medium: '<path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>'
+      };
+      
+      return `
+        <a href="${link.url}" title="${link.name}" aria-label="${link.name}" style="text-decoration:none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            ${icons[link.icon]}
+          </svg>
+        </a>
+      `;
+    }
+
+    // Function to populate sections using template cloning
+    function populateSections() {
+      // Update personal info
+      document.querySelector('.logo').textContent = siteData.personal.logo;
+      document.querySelector('.brand > div > div:first-child').textContent = siteData.personal.name;
+      document.querySelector('.brand > div > div:last-child').textContent = siteData.personal.title;
+      document.querySelector('h1').textContent = siteData.personal.tagline;
+      document.querySelector('.lead').textContent = siteData.personal.description;
+      document.querySelector('.hero-left > div:last-child').textContent = siteData.personal.location;
+
+      // Populate Services Section
+      const servicesTemplate = document.getElementById('services-template');
+      const servicesClone = servicesTemplate.cloneNode(true);
+      servicesClone.id = 'services';
+      servicesClone.querySelector('[data-field="title"]').textContent = siteData.services.title;
+      servicesClone.querySelector('[data-field="subtitle"]').textContent = siteData.services.subtitle;
+      servicesClone.querySelector('[data-field="topmateUrl"]').href = siteData.services.topmateUrl;
+      
+      const servicesContainer = servicesClone.querySelector('[data-field="services-container"]');
+      servicesContainer.innerHTML = '';
+      
+      siteData.services.offerings.forEach(service => {
+        const serviceTemplate = document.getElementById('service-item-template');
+        const serviceClone = serviceTemplate.cloneNode(true);
+        serviceClone.removeAttribute('id');
+        serviceClone.querySelector('[data-field="icon"]').textContent = service.icon;
+        serviceClone.querySelector('[data-field="title"]').textContent = service.title;
+        serviceClone.querySelector('[data-field="description"]').textContent = service.description;
+        servicesContainer.appendChild(serviceClone);
+      });
+      
+      document.getElementById('services-container').appendChild(servicesClone);
+
+      // Populate About Section
+      const aboutTemplate = document.getElementById('about-template');
+      const aboutClone = aboutTemplate.cloneNode(true);
+      aboutClone.id = 'about';
+      aboutClone.querySelector('[data-field="title"]').textContent = siteData.about.title;
+      aboutClone.querySelector('[data-field="subtitle"]').textContent = siteData.about.subtitle;
+      
+      const descContainer = aboutClone.querySelector('[data-field="description-container"]');
+      descContainer.innerHTML = siteData.about.description.map(p => 
+        `<p style="margin:0 0 16px 0;line-height:1.6">${p}</p>`
+      ).join('').replace(/(<p[^>]*>)([^<]*<\/p>)$/, (match, opening, content) => {
+        return opening.replace('margin:0 0 16px 0', 'margin:0') + content;
+      });
+      
+      aboutClone.querySelector('[data-field="technologies"]').innerHTML = 
+        siteData.about.technologies.map(createChip).join('');
+      aboutClone.querySelector('[data-field="interests"]').innerHTML = 
+        siteData.about.interests.map(createChip).join('');
+      
+      document.getElementById('about-container').appendChild(aboutClone);
+
+      // Populate Projects Section
+      const projectsTemplate = document.getElementById('projects-template');
+      const projectsClone = projectsTemplate.cloneNode(true);
+      projectsClone.id = 'projects';
+      projectsClone.querySelector('[data-field="title"]').textContent = siteData.projects.title;
+      projectsClone.querySelector('[data-field="subtitle"]').textContent = siteData.projects.subtitle;
+      
+      const projectsContainer = projectsClone.querySelector('[data-field="projects-container"]');
+      projectsContainer.innerHTML = '';
+      
+      siteData.projects.items.forEach(project => {
+        const projectTemplate = document.getElementById('project-item-template');
+        const projectClone = projectTemplate.cloneNode(true);
+        projectClone.removeAttribute('id');
+        projectClone.querySelector('[data-field="title"]').textContent = project.title;
+        projectClone.querySelector('[data-field="description"]').textContent = project.description;
+        projectClone.querySelector('[data-field="achievements"]').textContent = project.achievements;
+        projectClone.querySelector('[data-field="technologies"]').innerHTML = 
+          project.technologies.map(createChip).join('');
+        projectsContainer.appendChild(projectClone);
+      });
+      
+      document.getElementById('projects-container').appendChild(projectsClone);
+
+      // Populate Experience Section
+      const experienceTemplate = document.getElementById('experience-template');
+      const experienceClone = experienceTemplate.cloneNode(true);
+      experienceClone.id = 'experience';
+      experienceClone.querySelector('[data-field="title"]').textContent = siteData.experience.title;
+      experienceClone.querySelector('[data-field="subtitle"]').textContent = siteData.experience.subtitle;
+      
+      const experienceContainer = experienceClone.querySelector('[data-field="experience-container"]');
+      experienceContainer.innerHTML = '';
+      
+      siteData.experience.items.forEach(exp => {
+        const expTemplate = document.getElementById('experience-item-template');
+        const expClone = expTemplate.cloneNode(true);
+        expClone.removeAttribute('id');
+        expClone.querySelector('[data-field="role"]').textContent = exp.role;
+        expClone.querySelector('[data-field="company"]').textContent = exp.company;
+        expClone.querySelector('[data-field="period"]').textContent = exp.period;
+        expClone.querySelector('[data-field="technologies"]').innerHTML = 
+          exp.technologies.map(createChip).join('');
+        expClone.querySelector('[data-field="achievements"]').innerHTML = 
+          exp.achievements.map(achievement => `<li>${achievement}</li>`).join('');
+        experienceContainer.appendChild(expClone);
+      });
+      
+      document.getElementById('experience-container').appendChild(experienceClone);
+
+      // Update social links in header
+      const headerSocials = document.querySelector('.socials');
+      headerSocials.innerHTML = siteData.socialLinks.map(createSocialIcon).join('');
+
+      // Update CTA buttons with contact info
+      const emailLink = document.querySelector('.cta a.btn-primary');
+      const resumeLink = document.querySelector('.cta a.btn-ghost');
+      
+      emailLink.href = `mailto:${siteData.personal.email}`;
+      resumeLink.href = siteData.personal.resumeUrl;
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      populateSections();
+      // Set privacy policy date
+      document.getElementById('privacy-date').textContent = new Date().toLocaleDateString();
+    });
+
+    // Privacy modal toggle
+    function togglePrivacy() {
+      const modal = document.getElementById('privacy-modal');
+      modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+      
+      // Close on background click
+      if (modal.style.display === 'block') {
+        modal.onclick = function(e) {
+          if (e.target === modal) {
+            togglePrivacy();
+          }
+        };
+      }
+    }
+
     // Insert current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
