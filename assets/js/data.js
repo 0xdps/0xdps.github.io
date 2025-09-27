@@ -42,7 +42,7 @@ const siteData = {
 	services: {
 		title: "Services I offer on Topmate",
 		subtitle: "Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.",
-		topmateUrl: "#",
+		topmateUrl: "https://topmate.io/devendrapratap02",
 		offerings: [
 			{
 				icon: "MI",

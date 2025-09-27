@@ -226,30 +226,30 @@ function populateSections() {
 	const servicesContainer = document.getElementById("services-container");
 	if (servicesContainer && siteData.services) {
 		servicesContainer.innerHTML = `
-			<section class="card" style="margin-top: 18px">
-				<div style="display: flex; align-items: center; justify-content: space-between">
+			<section class="card section-card">
+				<div class="section-header">
 					<div>
-						<div style="font-weight: 700">${siteData.services.title}</div>
-						<div style="color: var(--muted); font-size: 13px; margin-top: 6px">
+						<div class="section-title">${siteData.services.title}</div>
+						<div class="section-subtitle">
 							${siteData.services.subtitle}
 						</div>
 					</div>
-					<div style="display: flex; gap: 8px; align-items: center">
+					<div class="section-actions">
 						<a class="btn btn-primary" href="${siteData.services.topmateUrl}" target="_blank" rel="noopener">Book on Topmate</a>
 					</div>
 				</div>
 
-				<div class="services" style="margin-top: 12px">
+				<div class="section-content">
 					${siteData.services.offerings
 						.map(
 							(service) => `
 						<div class="service-item">
-							<div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(20, 184, 166, 0.12); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); flex-shrink: 0;">
+							<div class="service-icon">
 								${service.icon}
 							</div>
-							<div style="flex: 1;">
-								<h4 style="margin: 0 0 4px 0; font-size: 15px;">${service.title}</h4>
-								<div style="color: var(--muted); font-size: 14px; line-height: 1.5;">
+							<div class="service-content">
+								<h4 class="service-title">${service.title}</h4>
+								<div class="service-description">
 									${service.description}
 								</div>
 							</div>
@@ -266,32 +266,32 @@ function populateSections() {
 	const aboutContainer = document.getElementById("about-container");
 	if (aboutContainer && siteData.about) {
 		aboutContainer.innerHTML = `
-			<section class="card" style="margin-top: 18px">
-				<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px">
+			<section class="card section-card">
+				<div class="section-header section-header--spaced">
 					<div>
-						<div style="font-weight: 700; font-size: 20px">${siteData.about.title}</div>
-						<div style="color: var(--muted); font-size: 14px; margin-top: 4px">
+						<div class="section-title">${siteData.about.title}</div>
+						<div class="section-subtitle">
 							${siteData.about.subtitle}
 						</div>
 					</div>
 				</div>
 
-				<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: start">
+				<div class="about-grid">
 					<div>
-						${siteData.about.description.map((para) => `<p style="margin: 0 0 16px 0; line-height: 1.6">${para}</p>`).join("")}
+						${siteData.about.description.map((para) => `<p class="about-content">${para}</p>`).join("")}
 					</div>
 
-					<div>
-						<div style="margin-bottom: 16px">
-							<h4 style="margin: 0 0 8px 0; font-size: 14px; color: var(--muted)">Core Technologies</h4>
-							<div style="display: flex; flex-wrap: wrap; gap: 6px">
+					<div class="about-sidebar">
+						<div class="skill-group">
+							<h4>Core Technologies</h4>
+							<div class="skill-tags">
 								${siteData.about.technologies.map((tech) => createChip(tech)).join("")}
 							</div>
 						</div>
 
-						<div>
-							<h4 style="margin: 0 0 8px 0; font-size: 14px; color: var(--muted)">Interests</h4>
-							<div style="display: flex; flex-wrap: wrap; gap: 6px">
+						<div class="skill-group">
+							<h4>Interests</h4>
+							<div class="skill-tags">
 								${siteData.about.interests.map((interest) => createChip(interest)).join("")}
 							</div>
 						</div>
@@ -305,27 +305,29 @@ function populateSections() {
 	const projectsContainer = document.getElementById("projects-container");
 	if (projectsContainer && siteData.projects) {
 		projectsContainer.innerHTML = `
-			<section class="card" style="margin-top: 18px">
-				<div style="margin-bottom: 20px">
-					<div style="font-weight: 700; font-size: 20px">${siteData.projects.title}</div>
-					<div style="color: var(--muted); font-size: 14px; margin-top: 4px">
-						${siteData.projects.subtitle}
+			<section class="card section-card">
+				<div class="section-header section-header--spaced-lg">
+					<div>
+						<div class="section-title">${siteData.projects.title}</div>
+						<div class="section-subtitle">
+							${siteData.projects.subtitle}
+						</div>
 					</div>
 				</div>
 
-				<div style="display: flex; flex-direction: column; gap: 16px">
+				<div class="projects-grid">
 					${siteData.projects.items
 						.map(
 							(project) => `
-						<div class="project" style="padding: 16px; border: 1px solid var(--border); border-radius: 8px;">
-							<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px">
-								<h3 style="margin: 0; font-size: 16px;">${project.title}</h3>
-								<div style="display: flex; gap: 6px">
+						<div class="project">
+							<div class="project-header">
+								<h3 class="project-title">${project.title}</h3>
+								<div class="project-tech">
 									${project.technologies.map((tech) => createChip(tech)).join("")}
 								</div>
 							</div>
-							<p style="margin: 0 0 8px 0; line-height: 1.6;">${project.description}</p>
-							<div style="margin-top: 8px; font-size: 13px; color: var(--muted)">
+							<p class="project-description">${project.description}</p>
+							<div class="project-achievements">
 								<strong>Key Results:</strong> ${project.achievements}
 							</div>
 						</div>
@@ -341,26 +343,28 @@ function populateSections() {
 	const sideProjectsContainer = document.getElementById("side-projects-container");
 	if (sideProjectsContainer && siteData.sideProjects) {
 		sideProjectsContainer.innerHTML = `
-			<section class="card" style="margin-top: 18px">
-				<div style="margin-bottom: 18px">
-					<div style="font-weight: 700; font-size: 20px">${siteData.sideProjects.title}</div>
-					<div style="color: var(--muted); font-size: 14px; margin-top: 4px">
-						${siteData.sideProjects.subtitle}
+			<section class="card section-card">
+				<div class="section-header section-header--spaced-md">
+					<div>
+						<div class="section-title">${siteData.sideProjects.title}</div>
+						<div class="section-subtitle">
+							${siteData.sideProjects.subtitle}
+						</div>
 					</div>
 				</div>
-				<div style="display: flex; flex-direction: column; gap: 14px">
+				<div class="side-projects-grid">
 					${siteData.sideProjects.items
 						.map(
 							(project) => `
-						<div class="project" style="padding: 12px; border: 1px solid var(--border); border-radius: 8px;">
-							<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px">
-								<h3 style="margin: 0; font-size: 15px">${project.name}</h3>
-								<div style="font-size: 12px; color: var(--muted)">${project.year}</div>
+						<div class="project">
+							<div class="side-project-header">
+								<h3 class="side-project-title">${project.name}</h3>
+								<div class="side-project-year">${project.year}</div>
 							</div>
-							<div style="display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 6px 0">
+							<div class="side-project-tech">
 								${project.technologies.map((tech) => createChip(tech)).join("")}
 							</div>
-							<p style="margin: 0; color: var(--muted); font-size: 14px">
+							<p class="side-project-description">
 								${project.description}
 							</p>
 						</div>
@@ -376,36 +380,38 @@ function populateSections() {
 	const experienceContainer = document.getElementById("experience-container");
 	if (experienceContainer && siteData.experience) {
 		experienceContainer.innerHTML = `
-			<section class="card" style="margin-top: 18px">
-				<div style="margin-bottom: 20px">
-					<div style="font-weight: 700; font-size: 20px">${siteData.experience.title}</div>
-					<div style="color: var(--muted); font-size: 14px; margin-top: 4px">
-						${siteData.experience.subtitle}
+			<section class="card section-card">
+				<div class="section-header section-header--spaced-lg">
+					<div>
+						<div class="section-title">${siteData.experience.title}</div>
+						<div class="section-subtitle">
+							${siteData.experience.subtitle}
+						</div>
 					</div>
 				</div>
 
-				<div style="display: flex; flex-direction: column; gap: 20px">
+				<div class="experience-timeline">
 					${siteData.experience.items
 						.map(
 							(job) => `
-						<div style="border-left: 3px solid var(--accent); padding-left: 16px">
-							<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px">
+						<div class="experience-item">
+							<div class="experience-header">
 								<div>
-									<h3 style="margin: 0; font-size: 16px">${job.role}</h3>
-									<div style="color: var(--accent); font-size: 14px; margin-top: 2px">
+									<h3 class="experience-role">${job.role}</h3>
+									<div class="experience-company">
 										${job.company}
 									</div>
 								</div>
-								<div style="font-size: 13px; color: var(--muted)">${job.period}</div>
+								<div class="experience-period">${job.period}</div>
 							</div>
 
-							<div style="margin-bottom: 12px">
-								<div style="display: flex; flex-wrap: wrap; gap: 6px">
+							<div class="experience-tech">
+								<div class="skill-tags">
 									${job.technologies.map((tech) => createChip(tech)).join("")}
 								</div>
 							</div>
 
-							<ul style="margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px">
+							<ul class="experience-achievements">
 								${job.achievements.map((achievement) => `<li>${achievement}</li>`).join("")}
 							</ul>
 						</div>
