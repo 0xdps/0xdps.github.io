@@ -1,1649 +1,1097 @@
-<!DOCTYPE html>
-  
-  <html lang="en">
-    
-     <head>
-      
-       <meta charset="utf-8" />
-      
-      
-       <meta name="viewport" content="width=device-width,initial-scale=1" />
-      
-      
-       <title>
-        Devendra — Software Engineer
-      </title>
-       <meta
-       name="description"
-       content="Devendra Pratap Singh — software engineer (system design, backend, Java & Python)."
-       />
-       <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-      
-      
-       <style>
-        
-         /* Simple, balanced styles (light + dark) */
-         :root {
-         --bg: #f8fafc;
-         --card: #ffffff;
-         --text: #0f172a;
-         --muted: #6b7280;
-         --accent: #14b8a6;
-         --radius: 14px;
-         }
-         [data-theme="dark"] {
-         --bg: #0b1220;
-         --card: #0f1724;
-         --text: #e6eef8;
-         --muted: #9aa6b2;
-         --accent: #5eead4;
-         }
-         * {
-         box-sizing: border-box;
-         }
-         body {
-         margin: 0;
-         font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-         Roboto, "Helvetica Neue", Arial;
-         color: var(--text);
-         background: var(--bg);
-         -webkit-font-smoothing: antialiased;
-         }
-         .container {
-         max-width: 1080px;
-         margin: 0 auto;
-         padding: 28px;
-         }
-         header {
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 12px;
-         }
-         .brand {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-         }
-         .logo {
-         width: 56px;
-         height: 56px;
-         border-radius: 10px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         background: linear-gradient(135deg, #14b8a6, #123524);
-         color: white;
-         font-weight: 700;
-         }
-         .socials {
-         display: flex;
-         gap: 10px;
-         align-items: center;
-         }
-         .icon-btn {
-         background: transparent;
-         border: 0;
-         padding: 8px;
-         border-radius: 8px;
-         cursor: pointer;
-         color: var(--muted);
-         transition: color 0.2s ease;
-         }
-         .icon-btn:hover {
-         color: var(--text);
-         }
-         .socials a {
-         transition: color 0.2s ease;
-         color: var(--muted);
-         }
-         .socials a:hover {
-         color: var(--text);
-         }
-         /* hero */
-         .hero {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 24px;
-         align-items: center;
-         margin-top: 28px;
-         }
-         .hero-left {
-         flex: 1;
-         min-width: 260px;
-         }
-         .hero-right {
-         width: 180px;
-         height: 180px;
-         border-radius: 16px;
-         background: linear-gradient(135deg, #14b8a6, #123524);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: white;
-         }
-         h1 {
-         font-size: 28px;
-         margin: 0;
-         }
-         p.lead {
-         margin-top: 12px;
-         color: var(--muted);
-         }
-         .cta {
-         margin-top: 16px;
-         display: flex;
-         gap: 10px;
-         }
-         .btn {
-         padding: 10px 14px;
-         border-radius: 10px;
-         border: 0;
-         cursor: pointer;
-         }
-         .btn-primary {
-         background: var(--accent);
-         color: white;
-         }
-         .btn-ghost {
-         background: transparent;
-         border: 1px solid rgba(100, 100, 120, 0.08);
-         }
-         /* cards */
-         .card {
-         background: var(--card);
-         padding: 18px;
-         border-radius: var(--radius);
-         box-shadow: 0 6px 20px rgba(11, 17, 26, 0.06);
-         border: 1px solid rgba(0, 0, 0, 0.03);
-         }
-         .grid {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 14px;
-         margin-top: 14px;
-         }
-         .chip {
-         display: inline-block;
-         padding: 6px 10px;
-         border-radius: 8px;
-         border: 1px solid rgba(0, 0, 0, 0.06);
-         font-size: 13px;
-         color: var(--muted);
-         }
-         /* sections */
-         section {
-         margin-top: 22px;
-         }
-         .two-col {
-         display: grid;
-         grid-template-columns: 1fr 340px;
-         gap: 18px;
-         }
-         /* projects list */
-         .project {
-         padding: 12px;
-         border-radius: 12px;
-         border: 1px solid rgba(0, 0, 0, 0.03);
-         background: linear-gradient(
-         180deg,
-         rgba(255, 255, 255, 0.02),
-         transparent
-         );
-         }
-         .project h3 {
-         margin: 0;
-         font-size: 16px;
-         }
-         .project p {
-         margin: 8px 0 0;
-         color: var(--muted);
-         font-size: 14px;
-         }
-         /* work list */
-         ol {
-         padding-left: 18px;
-         margin: 8px 0;
-         color: var(--muted);
-         }
-         /* contact */
-         form {
-         display: flex;
-         flex-direction: column;
-         gap: 10px;
-         }
-         input,
-         textarea {
-         padding: 10px;
-         border-radius: 8px;
-         border: 1px solid rgba(0, 0, 0, 0.08);
-         background: transparent;
-         color: var(--text);
-         }
-         textarea {
-         min-height: 120px;
-         }
-         footer {
-         margin-top: 28px;
-         text-align: center;
-         color: var(--muted);
-         font-size: 13px;
-         }
-         /* services */
-         .services {
-         display: flex;
-         flex-direction: column;
-         gap: 12px;
-         }
-         .service-item {
-         display: flex;
-         align-items: flex-start;
-         gap: 12px;
-         }
-         .service-item h4 {
-         margin: 0;
-         font-size: 15px;
-         }
-         .service-desc {
-         color: var(--muted);
-         font-size: 14px;
-         margin-top: 4px;
-         }
-         /* responsive */
-         @media (max-width: 900px) {
-         .grid {
-         grid-template-columns: repeat(1, 1fr);
-         }
-         .two-col {
-         grid-template-columns: 1fr;
-         }
-         .socials {
-         display: none;
-         }
-         /* Mobile adjustments for detailed sections */
-         #about > div:first-child > div:first-child {
-         display: grid !important;
-         grid-template-columns: 1fr !important;
-         gap: 16px !important;
-         }
-         #projects .project,
-         #experience > div:last-child > div {
-         margin-bottom: 16px;
-         }
-         #projects .project > div:first-child,
-         #experience > div:last-child > div > div:first-child {
-         display: block !important;
-         }
-         #projects .project > div:first-child > div:last-child,
-         #experience > div:last-child > div > div:first-child > div:last-child {
-         margin-top: 8px !important;
-         }
-         }
-         
-      </style>
-       
-    </head>
-     <body data-theme="light">
-      
-       <div class="container">
-        
-         <header>
-          
-           <div class="brand">
-            
-             <div class="logo">
-              DPS
-            </div>
-             <div>
-              
-               <div style="font-weight: 700">
-                Devendra Pratap Singh
-              </div>
-               <div style="font-size: 13px; color: var(--muted)">
-                
-                 Software Engineer • System Design • Java & Python
-                 
-              </div>
-               
-            </div>
-             
-          </div>
-           <div style="display: flex; align-items: center; gap: 12px">
-            
-             <!-- Theme toggle as an icon (sun / moon) -->
-              
-               <button
-               id="themeBtn"
-               class="icon-btn"
-               aria-label="Toggle theme"
-               title="Toggle theme"
-               >
-               <!-- moon icon initially (for dark toggle) -->
-                
-                 <svg
-                 id="themeIcon"
-                 width="20"
-                 height="20"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="1.6"
-                 >
-                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                
-                
-                 
-              </svg>
-               
-            </button>
-             <!-- social links -->
-              
-               <div class="socials" aria-hidden="false">
-                
-                 <a
-                 href="#"
-                 title="LinkedIn"
-                 aria-label="LinkedIn"
-                 style="text-decoration: none"
-                 >
-                 <svg
-                 width="20"
-                 height="20"
-                 viewBox="0 0 24 24"
-                 fill="currentColor"
-                 >
-                 <path
-                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                 />
-                 
-              </svg>
-               
-            </a>
-             <a
-             href="#"
-             title="GitHub"
-             aria-label="GitHub"
-             style="text-decoration: none"
-             >
-             <svg
-             width="20"
-             height="20"
-             viewBox="0 0 24 24"
-             fill="currentColor"
-             >
-             <path
-             d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-             />
-             
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Devendra — Software Engineer</title>
+		<meta
+			name="description"
+			content="Devendra Pratap Singh — software engineer (system design, backend, Java & Python)." />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+		<style>
+			/* Simple, balanced styles (light + dark) */
+			:root {
+				--bg: #f8fafc;
+				--card: #ffffff;
+				--text: #0f172a;
+				--muted: #6b7280;
+				--accent: #14b8a6;
+				--radius: 14px;
+			}
+			[data-theme="dark"] {
+				--bg: #0b1220;
+				--card: #0f1724;
+				--text: #e6eef8;
+				--muted: #9aa6b2;
+				--accent: #5eead4;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				font-family:
+					Inter,
+					ui-sans-serif,
+					system-ui,
+					-apple-system,
+					"Segoe UI",
+					Roboto,
+					"Helvetica Neue",
+					Arial;
+				color: var(--text);
+				background: var(--bg);
+				-webkit-font-smoothing: antialiased;
+			}
+
+			.container {
+				max-width: 1080px;
+				margin: 0 auto;
+				padding: 28px;
+			}
+			header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 12px;
+			}
+			.brand {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+			.logo {
+				width: 56px;
+				height: 56px;
+				border-radius: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: linear-gradient(135deg, #14b8a6, #123524);
+				color: white;
+				font-weight: 700;
+			}
+			.socials {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+			}
+			.icon-btn {
+				background: transparent;
+				border: 0;
+				padding: 8px;
+				border-radius: 8px;
+				cursor: pointer;
+				color: var(--muted);
+				transition: color 0.2s ease;
+			}
+			.icon-btn:hover {
+				color: var(--text);
+			}
+			.socials a {
+				transition: color 0.2s ease;
+				color: var(--muted);
+			}
+			.socials a:hover {
+				color: var(--text);
+			}
+
+			/* hero */
+			.hero {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 24px;
+				align-items: center;
+				margin-top: 28px;
+			}
+			.hero-left {
+				flex: 1;
+				min-width: 260px;
+			}
+			.hero-right {
+				width: 180px;
+				height: 180px;
+				border-radius: 16px;
+				background: linear-gradient(135deg, #14b8a6, #123524);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+			}
+			h1 {
+				font-size: 28px;
+				margin: 0;
+			}
+			p.lead {
+				margin-top: 12px;
+				color: var(--muted);
+			}
+			.cta {
+				margin-top: 16px;
+				display: flex;
+				gap: 10px;
+			}
+			.btn {
+				padding: 10px 14px;
+				border-radius: 10px;
+				border: 0;
+				cursor: pointer;
+			}
+			.btn-primary {
+				background: var(--accent);
+				color: white;
+			}
+			.btn-ghost {
+				background: transparent;
+				border: 1px solid rgba(100, 100, 120, 0.08);
+			}
+
+			/* cards */
+			.card {
+				background: var(--card);
+				padding: 18px;
+				border-radius: var(--radius);
+				box-shadow: 0 6px 20px rgba(11, 17, 26, 0.06);
+				border: 1px solid rgba(0, 0, 0, 0.03);
+			}
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 14px;
+				margin-top: 14px;
+			}
+			.chip {
+				display: inline-block;
+				padding: 6px 10px;
+				border-radius: 8px;
+				border: 1px solid rgba(0, 0, 0, 0.06);
+				font-size: 13px;
+				color: var(--muted);
+			}
+
+			/* sections */
+			section {
+				margin-top: 22px;
+			}
+			.two-col {
+				display: grid;
+				grid-template-columns: 1fr 340px;
+				gap: 18px;
+			}
+
+			/* projects list */
+			.project {
+				padding: 12px;
+				border-radius: 12px;
+				border: 1px solid rgba(0, 0, 0, 0.03);
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+			}
+			.project h3 {
+				margin: 0;
+				font-size: 16px;
+			}
+			.project p {
+				margin: 8px 0 0;
+				color: var(--muted);
+				font-size: 14px;
+			}
+
+			/* work list */
+			ol {
+				padding-left: 18px;
+				margin: 8px 0;
+				color: var(--muted);
+			}
+
+			/* contact */
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+			input,
+			textarea {
+				padding: 10px;
+				border-radius: 8px;
+				border: 1px solid rgba(0, 0, 0, 0.08);
+				background: transparent;
+				color: var(--text);
+			}
+			textarea {
+				min-height: 120px;
+			}
+
+			footer {
+				margin-top: 28px;
+				text-align: center;
+				color: var(--muted);
+				font-size: 13px;
+			}
+
+			/* services */
+			.services {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+			.service-item {
+				display: flex;
+				align-items: flex-start;
+				gap: 12px;
+			}
+			.service-item h4 {
+				margin: 0;
+				font-size: 15px;
+			}
+			.service-desc {
+				color: var(--muted);
+				font-size: 14px;
+				margin-top: 4px;
+			}
+
+			/* responsive */
+			@media (max-width: 900px) {
+				.grid {
+					grid-template-columns: repeat(1, 1fr);
+				}
+				.two-col {
+					grid-template-columns: 1fr;
+				}
+				.socials {
+					display: none;
+				}
+
+				/* Mobile adjustments for detailed sections */
+				#about > div:first-child > div:first-child {
+					display: grid !important;
+					grid-template-columns: 1fr !important;
+					gap: 16px !important;
+				}
+
+				#projects .project,
+				#experience > div:last-child > div {
+					margin-bottom: 16px;
+				}
+
+				#projects .project > div:first-child,
+				#experience > div:last-child > div > div:first-child {
+					display: block !important;
+				}
+
+				#projects .project > div:first-child > div:last-child,
+				#experience > div:last-child > div > div:first-child > div:last-child {
+					margin-top: 8px !important;
+				}
+			}
+		</style>
+	</head>
+	<body data-theme="light">
+		<div class="container">
+			<header>
+				<div class="brand">
+					<div class="logo">DPS</div>
+					<div>
+						<div style="font-weight: 700">Devendra Pratap Singh</div>
+						<div style="font-size: 13px; color: var(--muted)">Software Engineer • System Design • Java & Python</div>
+					</div>
+				</div>
+
+				<div style="display: flex; align-items: center; gap: 12px">
+					<!-- Theme toggle as an icon (sun / moon) -->
+					<button id="themeBtn" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+						<!-- moon icon initially (for dark toggle) -->
+						<svg
+							id="themeIcon"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.6">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+						</svg>
+					</button>
+
+					<!-- social links -->
+					<div class="socials" aria-hidden="false">
+						<a href="#" title="LinkedIn" aria-label="LinkedIn" style="text-decoration: none">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+							</svg>
+						</a>
+						<a href="#" title="GitHub" aria-label="GitHub" style="text-decoration: none">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+							</svg>
+						</a>
+						<a href="#" title="X / Twitter" aria-label="X" style="text-decoration: none">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+							</svg>
+						</a>
+					</div>
+				</div>
+			</header>
+
+			<main>
+				<section class="hero">
+					<div class="hero-left">
+						<h1>I build scalable systems & explain them clearly.</h1>
+						<p class="lead">
+							Engineer focused on backend services, system design, and developer-friendly documentation. I prefer
+							pragmatic trade-offs and clean architecture.
+						</p>
+
+						<div class="cta">
+							<a href="#" class="btn btn-primary">Email Me</a>
+							<a href="#" class="btn btn-ghost">Download Resume</a>
+						</div>
+
+						<div style="margin-top: 12px; font-size: 13px; color: var(--muted)">
+							Based in India • Vegetarian • Loves clear diagrams & concise explanations
+						</div>
+					</div>
+
+					<div
+						class="hero-right"
+						style="
+							background-image: url(&quot;profile.jpg&quot;);
+							background-size: cover;
+							background-position: center;
+						"></div>
+				</section>
+
+				<!-- Hidden Templates -->
+				<div style="display: none">
+					<!-- Services Template -->
+					<section id="services-template" class="card" style="margin-top: 18px">
+						<div style="display: flex; align-items: center; justify-content: space-between">
+							<div>
+								<div style="font-weight: 700" data-field="title">Services I offer on Topmate</div>
+								<div style="color: var(--muted); font-size: 13px; margin-top: 6px" data-field="subtitle">
+									Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.
+								</div>
+							</div>
+							<div style="display: flex; gap: 8px; align-items: center">
+								<a class="btn btn-primary" href="#" target="_blank" rel="noopener" data-field="topmateUrl"
+									>Book on Topmate</a
+								>
+							</div>
+						</div>
+
+						<div class="services" style="margin-top: 12px" data-field="services-container">
+							<!-- Services populated by JavaScript -->
+						</div>
+					</section>
+
+					<!-- Service Item Template -->
+					<div class="service-item" id="service-item-template">
+						<div
+							style="
+								width: 34px;
+								height: 34px;
+								border-radius: 8px;
+								background: rgba(20, 184, 166, 0.12);
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								font-weight: 700;
+								color: var(--accent);
+							"
+							data-field="icon">
+							MI
+						</div>
+						<div>
+							<h4 data-field="title">Mock Interviews (60 min)</h4>
+							<div class="service-desc" data-field="description">
+								Live, structured mock interviews with feedback — system design rounds, backend, and Java/Python deep
+								dives. Includes written notes and improvement plan.
+							</div>
+						</div>
+					</div>
+
+					<!-- About Template -->
+					<section id="about-template" class="card" style="margin-top: 18px">
+						<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px">
+							<div>
+								<div style="font-weight: 700; font-size: 20px" data-field="title">About Me</div>
+								<div style="color: var(--muted); font-size: 14px; margin-top: 4px" data-field="subtitle">
+									Building scalable systems with clean architecture
+								</div>
+							</div>
+						</div>
+
+						<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: start">
+							<div data-field="description-container">
+								<p style="margin: 0 0 16px 0; line-height: 1.6">Description paragraphs will be inserted here</p>
+							</div>
+
+							<div>
+								<div style="margin-bottom: 16px">
+									<h4 style="margin: 0 0 8px 0; font-size: 14px; color: var(--muted)">Core Technologies</h4>
+									<div style="display: flex; flex-wrap: wrap; gap: 6px" data-field="technologies">
+										<!-- Technologies populated by JavaScript -->
+									</div>
+								</div>
+
+								<div>
+									<h4 style="margin: 0 0 8px 0; font-size: 14px; color: var(--muted)">Interests</h4>
+									<div style="display: flex; flex-wrap: wrap; gap: 6px" data-field="interests">
+										<!-- Interests populated by JavaScript -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Projects Template -->
+					<section id="projects-template" class="card" style="margin-top: 18px">
+						<div style="margin-bottom: 20px">
+							<div style="font-weight: 700; font-size: 20px" data-field="title">Featured Projects</div>
+							<div style="color: var(--muted); font-size: 14px; margin-top: 4px" data-field="subtitle">
+								A selection of projects showcasing system design and engineering skills
+							</div>
+						</div>
+
+						<div style="display: flex; flex-direction: column; gap: 16px" data-field="projects-container">
+							<!-- Projects populated by JavaScript -->
+						</div>
+					</section>
+
+					<!-- Project Item Template -->
+					<div class="project" id="project-item-template">
+						<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px">
+							<h3 data-field="title">Scalable Feed Generation System</h3>
+							<div style="display: flex; gap: 6px" data-field="technologies">
+								<!-- Technologies populated by JavaScript -->
+							</div>
+						</div>
+						<p data-field="description">Built a high-throughput feed generation system handling 10M+ daily requests.</p>
+						<div style="margin-top: 8px; font-size: 13px; color: var(--muted)" data-field="achievements">
+							Key achievements: 60% reduction in latency, 5x increase in throughput, zero-downtime deployments
+						</div>
+					</div>
+
+					<!-- Side Projects Template -->
+					<section id="side-projects-template" class="card" style="margin-top: 18px">
+						<div style="margin-bottom: 18px">
+							<div style="font-weight: 700; font-size: 20px" data-field="title">Side Projects</div>
+							<div style="color: var(--muted); font-size: 14px; margin-top: 4px" data-field="subtitle">
+								Independent explorations, utilities & experiments
+							</div>
+						</div>
+						<div style="display: flex; flex-direction: column; gap: 14px" data-field="side-projects-container">
+							<!-- Side projects populated by JavaScript -->
+						</div>
+					</section>
+
+					<!-- Side Project Item Template -->
+					<div class="project" id="side-project-item-template" style="padding: 12px">
+						<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px">
+							<h3 data-field="name" style="margin: 0; font-size: 15px">Project Name</h3>
+							<div data-field="year" style="font-size: 12px; color: var(--muted)">2024</div>
+						</div>
+						<div data-field="technologies" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 6px 0"></div>
+						<p data-field="description" style="margin: 0; color: var(--muted); font-size: 14px">
+							Short description of the side project.
+						</p>
+					</div>
+
+					<!-- Experience Template -->
+					<section id="experience-template" class="card" style="margin-top: 18px">
+						<div style="margin-bottom: 20px">
+							<div style="font-weight: 700; font-size: 20px" data-field="title">Professional Experience</div>
+							<div style="color: var(--muted); font-size: 14px; margin-top: 4px" data-field="subtitle">
+								Building scalable systems and leading technical initiatives
+							</div>
+						</div>
+
+						<div style="display: flex; flex-direction: column; gap: 20px" data-field="experience-container">
+							<!-- Experience items populated by JavaScript -->
+						</div>
+					</section>
+
+					<!-- Experience Item Template -->
+					<div style="border-left: 3px solid var(--accent); padding-left: 16px" id="experience-item-template">
+						<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px">
+							<div>
+								<h3 style="margin: 0; font-size: 16px" data-field="role">Senior Backend Engineer</h3>
+								<div style="color: var(--accent); font-size: 14px; margin-top: 2px" data-field="company">
+									Tech Solutions Inc.
+								</div>
+							</div>
+							<div style="font-size: 13px; color: var(--muted)" data-field="period">2022 - Present</div>
+						</div>
+
+						<div style="margin-bottom: 12px">
+							<div style="display: flex; flex-wrap: wrap; gap: 6px" data-field="technologies">
+								<!-- Technologies populated by JavaScript -->
+							</div>
+						</div>
+
+						<ul style="margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px" data-field="achievements">
+							<!-- Achievements populated by JavaScript -->
+						</ul>
+					</div>
+				</div>
+
+				<!-- Containers for populated content -->
+				<div id="services-container"></div>
+				<div id="about-container"></div>
+				<div id="projects-container"></div>
+				<div id="side-projects-container"></div>
+				<div id="experience-container"></div>
+
+				<footer>
+					© <span id="year"></span> Devendra — Built with clarity. •
+					<a href="#privacy" onclick="togglePrivacy()">Privacy</a>
+				</footer>
+
+				<!-- Privacy Modal/Section (hidden by default) -->
+				<div
+					id="privacy-modal"
+					style="
+						display: none;
+						position: fixed;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.8);
+						z-index: 1000;
+					">
+					<div
+						style="
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							background: var(--card);
+							border-radius: 16px;
+							max-width: 600px;
+							max-height: 80vh;
+							overflow: hidden;
+							box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+						">
+						<div style="padding: 32px; max-height: 80vh; overflow-y: auto">
+							<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px">
+								<h2 style="margin: 0; color: var(--text)">Privacy Policy</h2>
+								<button
+									onclick="togglePrivacy()"
+									style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted)">
+									&times;
+								</button>
+							</div>
+
+							<div style="color: var(--text); line-height: 1.6">
+								<p><strong>Last updated:</strong> <span id="privacy-date"></span></p>
+
+								<h3 style="color: var(--accent); margin-top: 24px; margin-bottom: 12px">Information Collection</h3>
+								<p>
+									This website is a static portfolio site. I don't collect, store, or process any personal data. No
+									cookies, analytics, or tracking scripts are used.
+								</p>
+
+								<h3 style="color: var(--accent); margin-top: 24px; margin-bottom: 12px">Contact Information</h3>
+								<p>
+									When you contact me via email or social media links, your communication is handled according to the
+									respective platform's privacy policies (Gmail, LinkedIn, GitHub, etc.).
+								</p>
+
+								<h3 style="color: var(--accent); margin-top: 24px; margin-bottom: 12px">Third-Party Services</h3>
+								<p>
+									This site may link to external services (Topmate, social media platforms). These services have their
+									own privacy policies which govern their data handling practices.
+								</p>
+
+								<h3 style="color: var(--accent); margin-top: 24px; margin-bottom: 12px">Data Security</h3>
+								<p>
+									Since no personal data is collected or stored on this website, there are no data security concerns
+									related to this site specifically.
+								</p>
+
+								<h3 style="color: var(--accent); margin-top: 24px; margin-bottom: 12px">Changes to Privacy Policy</h3>
+								<p>Any updates to this privacy policy will be reflected on this page with a new "last updated" date.</p>
+
+								<h3 style="color: var(--accent); margin-top: 24px; margin-bottom: 12px">Contact</h3>
+								<p>
+									For privacy-related questions, contact me at:
+									<a href="#" id="privacy-email-link" style="color: var(--accent)">email</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<script>
+			// Site data in JSON format for easy management
+			const siteData = {
+				personal: {
+					name: "Devendra Pratap Singh",
+					title: "Software Engineer / Engineering Manager • Backend • System Design",
+					logo: "DPS",
+					tagline: "I build scalable systems & explain them clearly.",
+					description:
+						"Engineer focused on backend systems, cloud migrations, and developer-friendly documentation. I prefer pragmatic trade-offs and clean architecture.",
+					location: "Based in India • Vegetarian • Loves clear diagrams & concise explanations",
+					email: "dps.manit@gmail.com",
+					phone: "+91-9424475996",
+					resumeUrl: "./Devendra_Pratap_Singh_Resume.pdf",
+				},
+
+				about: {
+					title: "About Me",
+					subtitle: "Building scalable systems with clean architecture",
+					description: [
+						"I have 9+ years of experience in backend development, system design, and cloud migrations. My work focuses on building reliable, maintainable systems that scale for real-world traffic.",
+						"I emphasize pragmatic trade-offs, clear documentation, and developer experience. I aim to deliver robust solutions and improve engineering processes across teams.",
+						"Outside of work I contribute to side projects, explore new technologies, and mentor engineers through mock interviews and 1:1 sessions.",
+					],
+					technologies: [
+						"Java",
+						"Python",
+						"Go",
+						"Node.js",
+						"Spring Boot",
+						"Django",
+						"PostgreSQL",
+						"Redis",
+						"Kafka",
+						"Docker",
+						"Kubernetes",
+						"GCP",
+						"AWS",
+					],
+					interests: ["System Design", "Microservices", "Performance", "DevOps", "Cloud Migrations", "Observability"],
+				},
+
+				services: {
+					title: "Services I offer on Topmate",
+					subtitle:
+						"Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.",
+					topmateUrl: "#",
+					offerings: [
+						{
+							icon: "MI",
+							title: "Mock Interviews (60 min)",
+							description:
+								"Live, structured mock interviews with feedback — system design rounds, backend, and Java/Python deep dives. Includes written notes and improvement plan.",
+						},
+						{
+							icon: "1-1",
+							title: "One-on-One Mentorship (30/60 min)",
+							description:
+								"Focused sessions for career guidance, system design walkthroughs, and code review with actionable suggestions.",
+						},
+						{
+							icon: "QD",
+							title: "Quick Doubt Call (15–20 min)",
+							description:
+								"Short, focused calls to clear a single problem — debugging help, architecture questions, interview doubt clarifications.",
+						},
+					],
+				},
+
+				projects: {
+					title: "Featured Projects",
+					subtitle: "A selection of projects showcasing system design and engineering skills",
+					items: [
+						{
+							title: "Scalable Feed Generation System",
+							technologies: ["Java", "Redis", "Kafka"],
+							description:
+								"Built a high-throughput feed generation system handling 10M+ daily requests. Implemented real-time ranking algorithms, distributed caching, and event-driven architecture to ensure sub-200ms response times.",
+							achievements: "60% reduction in latency, 5x increase in throughput, zero-downtime deployments",
+						},
+						{
+							title: "Cloud Migration & NFT Platform Re-architecture",
+							technologies: ["GCP", "Postgres", "Background Workers"],
+							description:
+								"Led cloud migration from AWS to GCP and re-architected an NFT platform to use the database as the primary source of truth with background synchronization for blockchain data.",
+							achievements:
+								"Reduced transaction times from minutes to seconds; implemented secure secret management with GCP Secret Manager",
+						},
+						{
+							title: "Real-time Analytics Pipeline",
+							technologies: ["Python", "Apache Spark", "ClickHouse"],
+							description:
+								"Developed a real-time analytics pipeline handling TBs of daily data with optimized time-series aggregation and automated alerting.",
+							achievements: "Reduced analytics latency from hours to minutes; maintained 99.9% data accuracy",
+						},
+					],
+				},
+
+				experience: {
+					title: "Professional Experience",
+					subtitle: "Building scalable systems and leading technical initiatives",
+					items: [
+						{
+							role: "Engineering Manager",
+							company: "Faze Technologies (Official Cricket NFT Provider)",
+							period: "April 2024 - Present",
+							technologies: ["GCP", "Postgres", "Background Workers", "Secret Manager"],
+							achievements: [
+								"Led migration from AWS to GCP improving scalability and cost efficiency",
+								"Re-architected system to decouple blockchain dependency, making DB the source of truth and implementing background sync for NFTs and funds",
+								"Designed and implemented an accounting system to track user transactions, platform revenue and fees",
+								"Integrated GCP Secret Manager for secure handling of configuration and secrets",
+							],
+						},
+						{
+							role: "Senior Software Engineer",
+							company: "Zynga Gaming",
+							period: "Sept 2018 - July 2023",
+							technologies: ["C++/JS tooling", "Backend automation", "Performance Optimization"],
+							achievements: [
+								"Optimized in-game memory usage drastically via asset data refactor",
+								"Reduced pre-release execution times from ~2 hours to 15 minutes through process improvements",
+								"Designed dynamic modular game-settings and automation for reskin feature",
+								"Built systems to run custom scripts during game load without new releases",
+							],
+						},
+						{
+							role: "Software Engineer",
+							company: "BookMyShow",
+							period: "Nov 2016 - Sept 2018",
+							technologies: ["Java", "LDAP", "Middleware"],
+							achievements: [
+								"Engineered an Identity Access Management (IAM) tool with LDAP",
+								"Developed a Universal Access Portal for internal projects",
+								"Built a real-time cinema health monitoring tool",
+								"Led development of a Queue Manager middleware with monitoring",
+							],
+						},
+						{
+							role: "Software Engineer",
+							company: "Incture Technologies",
+							period: "July 2015 - Oct 2016",
+							technologies: ["Integration", "Mobile services", "SAP"],
+							achievements: [
+								"Contributed to systems for seamless data access from SAP to non-SAP backends",
+								"Worked on mobile client for SAP PO monitoring and HR Admin module features",
+							],
+						},
+					],
+				},
+
+				sideProjects: {
+					title: "Side Projects",
+					subtitle: "Independent explorations, utilities & experiments",
+					items: [
+						{
+							name: "Object Data Model for Google Sheets",
+							year: 2018,
+							description:
+								"Python library to fetch Google Sheets data and convert it into class objects resembling Django ORM models.",
+							technologies: ["Python", "Google Sheets API"],
+						},
+						{
+							name: "Windows Phone App for GeeksforGeeks",
+							year: 2014,
+							description: "Mobile client providing GeeksforGeeks content with offline access (legacy project).",
+							technologies: ["C#", "Windows Phone"],
+						},
+						{
+							name: "Facebook Logout Script",
+							year: 2013,
+							description: "Browser userscript enabling instant logout using a keyboard shortcut.",
+							technologies: ["JavaScript", "GreaseMonkey"],
+						},
+					],
+				},
+
+				education: {
+					degree: "B.Tech in Computer Science and Engineering",
+					institution: "National Institute of Technology, Bhopal",
+					period: "2011 - 2015",
+					grade: "6.4 CGPA",
+				},
+
+				skills: {
+					primary: ["Java", "Python", "Go", "Node.js", "Spring Boot", "Django"],
+					databases: ["PostgreSQL", "Redis", "MongoDB"],
+					devops: ["Docker", "Kubernetes", "GCP", "AWS"],
+					others: ["Kafka", "Observability", "Performance Tuning"],
+				},
+
+				socialLinks: [
+					{
+						name: "LinkedIn",
+						url: "https://www.linkedin.com/in/devendrapratap",
+						icon: "linkedin",
+					},
+					{
+						name: "GitHub",
+						url: "https://github.com/devendrapratap02",
+						icon: "github",
+					},
+					{
+						name: "Twitter",
+						url: "https://twitter.com/_devendrapratap",
+						icon: "twitter",
+					},
+					{
+						name: "Medium",
+						url: "https://medium.com/@devendrapratap02",
+						icon: "medium",
+					},
+				],
+			};
+
+			// Function to create chips/tags
+			function createChip(text) {
+				return `<span class="chip">${text}</span>`;
+			}
+
+			// Function to create social icons
+			function createSocialIcon(link) {
+				const icons = {
+					linkedin:
+						'<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>',
+					github:
+						'<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>',
+					twitter:
+						'<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.080l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
+					medium:
+						'<path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>',
+				};
+
+				return `
+        <a href="${link.url}" title="${link.name}" aria-label="${link.name}" style="text-decoration:none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            ${icons[link.icon]}
           </svg>
-           
         </a>
-         <a
-         href="#"
-         title="X / Twitter"
-         aria-label="X"
-         style="text-decoration: none"
-         >
-         <svg
-         width="20"
-         height="20"
-         viewBox="0 0 24 24"
-         fill="currentColor"
-         >
-         <path
-         d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-         />
-         
-      </svg>
-       
-    </a>
-     
-  </div>
-   
-</div>
- 
-</header>
- <main>
-  
-   <section class="hero">
-    
-     <div class="hero-left">
-      
-       <h1>
-        I build scalable systems & explain them clearly.
-      </h1>
-       <p class="lead">
-        
-         Engineer focused on backend services, system design, and
-         developer-friendly documentation. I prefer pragmatic trade-offs
-         and clean architecture.
-         
-      </p>
-       <div class="cta">
-        
-         <a href="#" class="btn btn-primary"
-         >Email Me</a
-         >
-         <a href="#" class="btn btn-ghost"
-         >Download Resume</a
-         >
-         
-      </div>
-       <div style="margin-top: 12px; font-size: 13px; color: var(--muted)">
-        
-         Based in India • Vegetarian • Loves clear diagrams & concise
-         explanations
-         
-      </div>
-       
-    </div>
-     <div
-     class="hero-right"
-     style="
-     background-image: url('profile.jpg');
-     background-size: cover;
-     background-position: center;
-     "
-     >
-  </div>
-   
-</section>
- <!-- Hidden Templates -->
-  
-   <div style="display: none">
-    
-     <!-- Services Template -->
-      
-       <section id="services-template" class="card" style="margin-top: 18px">
-        
-         <div
-         style="
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         "
-         >
-         <div>
-          
-           <div style="font-weight: 700" data-field="title">
-            
-             Services I offer on Topmate
-             
-          </div>
-           <div
-           style="color: var(--muted); font-size: 13px; margin-top: 6px"
-           data-field="subtitle"
-           >
-           Hand-picked calls to help you move faster — technical,
-           interview-focused, and quick doubt resolution.
-           
-        </div>
-         
-      </div>
-       <div style="display: flex; gap: 8px; align-items: center">
-        
-         <a
-         class="btn btn-primary"
-         href="#"
-         target="_blank"
-         rel="noopener"
-         data-field="topmateUrl"
-         >Book on Topmate</a
-         >
-         
-      </div>
-       
-    </div>
-     <div
-     class="services"
-     style="margin-top: 12px"
-     data-field="services-container"
-     >
-     <!-- Services populated by JavaScript -->
-      
-       
-    </div>
-     
-  </section>
-   <!-- Service Item Template -->
-    
-     <div class="service-item" id="service-item-template">
-      
-       <div
-       style="
-       width: 34px;
-       height: 34px;
-       border-radius: 8px;
-       background: rgba(20, 184, 166, 0.12);
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       font-weight: 700;
-       color: var(--accent);
-       "
-       data-field="icon"
-       >
-       MI
-       
-    </div>
-     <div>
-      
-       <h4 data-field="title">
-        Mock Interviews (60 min)
-      </h4>
-       <div class="service-desc" data-field="description">
-        
-         Live, structured mock interviews with feedback — system design
-         rounds, backend, and Java/Python deep dives. Includes written
-         notes and improvement plan.
-         
-      </div>
-       
-    </div>
-     
-  </div>
-   <!-- About Template -->
-    
-     <section id="about-template" class="card" style="margin-top: 18px">
-      
-       <div
-       style="
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       margin-bottom: 16px;
-       "
-       >
-       <div>
-        
-         <div
-         style="font-weight: 700; font-size: 20px"
-         data-field="title"
-         >
-         About Me
-         
-      </div>
-       <div
-       style="color: var(--muted); font-size: 14px; margin-top: 4px"
-       data-field="subtitle"
-       >
-       Building scalable systems with clean architecture
-       
-    </div>
-     
-  </div>
-   
-</div>
- <div
- style="
- display: grid;
- grid-template-columns: 2fr 1fr;
- gap: 20px;
- align-items: start;
- "
- >
- <div data-field="description-container">
-  
-   <p style="margin: 0 0 16px 0; line-height: 1.6">
-    
-     Description paragraphs will be inserted here
-     
-  </p>
-   
-</div>
- <div>
-  
-   <div style="margin-bottom: 16px">
-    
-     <h4
-     style="
-     margin: 0 0 8px 0;
-     font-size: 14px;
-     color: var(--muted);
-     "
-     >
-     Core Technologies
-     
-  </h4>
-   <div
-   style="display: flex; flex-wrap: wrap; gap: 6px"
-   data-field="technologies"
-   >
-   <!-- Technologies populated by JavaScript -->
-    
-     
-  </div>
-   
-</div>
- <div>
-  
-   <h4
-   style="
-   margin: 0 0 8px 0;
-   font-size: 14px;
-   color: var(--muted);
-   "
-   >
-   Interests
-   
-</h4>
- <div
- style="display: flex; flex-wrap: wrap; gap: 6px"
- data-field="interests"
- >
- <!-- Interests populated by JavaScript -->
-  
-   
-</div>
- 
-</div>
- 
-</div>
- 
-</div>
- 
-</section>
- <!-- Projects Template -->
-  
-   <section id="projects-template" class="card" style="margin-top: 18px">
-    
-     <div style="margin-bottom: 20px">
-      
-       <div style="font-weight: 700; font-size: 20px" data-field="title">
-        
-         Featured Projects
-         
-      </div>
-       <div
-       style="color: var(--muted); font-size: 14px; margin-top: 4px"
-       data-field="subtitle"
-       >
-       A selection of projects showcasing system design and engineering
-       skills
-       
-    </div>
-     
-  </div>
-   <div
-   style="display: flex; flex-direction: column; gap: 16px"
-   data-field="projects-container"
-   >
-   <!-- Projects populated by JavaScript -->
-    
-     
-  </div>
-   
-</section>
- <!-- Project Item Template -->
-  
-   <div class="project" id="project-item-template">
-    
-     <div
-     style="
-     display: flex;
-     justify-content: space-between;
-     align-items: flex-start;
-     margin-bottom: 8px;
-     "
-     >
-     <h3 data-field="title">
-      Scalable Feed Generation System
-    </h3>
-     <div style="display: flex; gap: 6px" data-field="technologies">
-      
-       <!-- Technologies populated by JavaScript -->
-        
-         
-      </div>
-       
-    </div>
-     <p data-field="description">
-      
-       Built a high-throughput feed generation system handling 10M+ daily
-       requests.
-       
-    </p>
-     <div
-     style="margin-top: 8px; font-size: 13px; color: var(--muted)"
-     data-field="achievements"
-     >
-     Key achievements: 60% reduction in latency, 5x increase in
-     throughput, zero-downtime deployments
-     
-  </div>
-   
-</div>
- <!-- Side Projects Template -->
-  
-   <section
-   id="side-projects-template"
-   class="card"
-   style="margin-top: 18px"
-   >
-   <div style="margin-bottom: 18px">
-    
-     <div style="font-weight: 700; font-size: 20px" data-field="title">
-      
-       Side Projects
-       
-    </div>
-     <div
-     style="color: var(--muted); font-size: 14px; margin-top: 4px"
-     data-field="subtitle"
-     >
-     Independent explorations, utilities & experiments
-     
-  </div>
-   
-</div>
- <div
- style="display: flex; flex-direction: column; gap: 14px"
- data-field="side-projects-container"
- >
- <!-- Side projects populated by JavaScript -->
-  
-   
-</div>
- 
-</section>
- <!-- Side Project Item Template -->
-  
-   <div
-   class="project"
-   id="side-project-item-template"
-   style="padding: 12px"
-   >
-   <div
-   style="
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
-   margin-bottom: 6px;
-   "
-   >
-   <h3 data-field="name" style="margin: 0; font-size: 15px">
-    
-     Project Name
-     
-  </h3>
-   <div
-   data-field="year"
-   style="font-size: 12px; color: var(--muted)"
-   >
-   2024
-   
-</div>
- 
-</div>
- <div
- data-field="technologies"
- style="
- display: flex;
- flex-wrap: wrap;
- gap: 6px;
- margin: 0 0 6px 0;
- "
- >
-</div>
- <p
- data-field="description"
- style="margin: 0; color: var(--muted); font-size: 14px"
- >
- Short description of the side project.
- 
-</p>
- 
-</div>
- <!-- Experience Template -->
-  
-   <section
-   id="experience-template"
-   class="card"
-   style="margin-top: 18px"
-   >
-   <div style="margin-bottom: 20px">
-    
-     <div style="font-weight: 700; font-size: 20px" data-field="title">
-      
-       Professional Experience
-       
-    </div>
-     <div
-     style="color: var(--muted); font-size: 14px; margin-top: 4px"
-     data-field="subtitle"
-     >
-     Building scalable systems and leading technical initiatives
-     
-  </div>
-   
-</div>
- <div
- style="display: flex; flex-direction: column; gap: 20px"
- data-field="experience-container"
- >
- <!-- Experience items populated by JavaScript -->
-  
-   
-</div>
- 
-</section>
- <!-- Experience Item Template -->
-  
-   <div
-   style="border-left: 3px solid var(--accent); padding-left: 16px"
-   id="experience-item-template"
-   >
-   <div
-   style="
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
-   margin-bottom: 8px;
-   "
-   >
-   <div>
-    
-     <h3 style="margin: 0; font-size: 16px" data-field="role">
-      
-       Senior Backend Engineer
-       
-    </h3>
-     <div
-     style="color: var(--accent); font-size: 14px; margin-top: 2px"
-     data-field="company"
-     >
-     Tech Solutions Inc.
-     
-  </div>
-   
-</div>
- <div
- style="font-size: 13px; color: var(--muted)"
- data-field="period"
- >
- 2022 - Present
- 
-</div>
- 
-</div>
- <div style="margin-bottom: 12px">
-  
-   <div
-   style="display: flex; flex-wrap: wrap; gap: 6px"
-   data-field="technologies"
-   >
-   <!-- Technologies populated by JavaScript -->
-    
-     
-  </div>
-   
-</div>
- <ul
- style="
- margin: 0;
- padding-left: 20px;
- color: var(--muted);
- font-size: 14px;
- "
- data-field="achievements"
- >
- <!-- Achievements populated by JavaScript -->
-  
-   
-</ul>
- 
-</div>
- 
-</div>
- <!-- Containers for populated content -->
-  
-   <div id="services-container">
-    
-  </div>
-   <div id="about-container">
-    
-  </div>
-   <div id="projects-container">
-    
-  </div>
-   <div id="side-projects-container">
-    
-  </div>
-   <div id="experience-container">
-    
-  </div>
-   <footer>
-    
-     © <span id="year">
-      
-    </span> Devendra — Built with clarity. •
-     <a href="#privacy" onclick="togglePrivacy()">
-      Privacy
-    </a>
-     
-  </footer>
-   <!-- Privacy Modal/Section (hidden by default) -->
-    
-     <div
-     id="privacy-modal"
-     style="
-     display: none;
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background: rgba(0, 0, 0, 0.8);
-     z-index: 1000;
-     "
-     >
-     <div
-     style="
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     background: var(--card);
-     border-radius: 16px;
-     max-width: 600px;
-     max-height: 80vh;
-     overflow: hidden;
-     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-     "
-     >
-     <div style="padding: 32px; max-height: 80vh; overflow-y: auto">
-      
-       <div
-       style="
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       margin-bottom: 20px;
-       "
-       >
-       <h2 style="margin: 0; color: var(--text)">
-        Privacy Policy
-      </h2>
-       <button
-       onclick="togglePrivacy()"
-       style="
-       background: none;
-       border: none;
-       font-size: 24px;
-       cursor: pointer;
-       color: var(--muted);
-       "
-       >
-       &times;
-       
-    </button>
-     
-  </div>
-   <div style="color: var(--text); line-height: 1.6">
-    
-     <p>
-    
-     <strong>
-      Last updated:
-    </strong> <span id="privacy-date">
-      
-    </span>
-     
-  </p>
-   <h3
-   style="
-   color: var(--accent);
-   margin-top: 24px;
-   margin-bottom: 12px;
-   "
-   >
-   Information Collection
-   
-</h3>
- <p>
+      `;
+			}
 
- This website is a static portfolio site. I don't collect,
- store, or process any personal data. No cookies, analytics, or
- tracking scripts are used.
- 
-</p>
- <h3
- style="
- color: var(--accent);
- margin-top: 24px;
- margin-bottom: 12px;
- "
- >
- Contact Information
- 
-</h3>
- <p>
+			// Function to populate sections using template cloning
+			function populateSections() {
+				// Update personal info
+				document.querySelector(".logo").textContent = siteData.personal.logo;
+				document.querySelector(".brand > div > div:first-child").textContent = siteData.personal.name;
+				document.querySelector(".brand > div > div:last-child").textContent = siteData.personal.title;
+				document.querySelector("h1").textContent = siteData.personal.tagline;
+				document.querySelector(".lead").textContent = siteData.personal.description;
+				document.querySelector(".hero-left > div:last-child").textContent = siteData.personal.location;
 
- When you contact me via email or social media links, your
- communication is handled according to the respective
- platform's privacy policies (Gmail, LinkedIn, GitHub, etc.).
- 
-</p>
- <h3
- style="
- color: var(--accent);
- margin-top: 24px;
- margin-bottom: 12px;
- "
- >
- Third-Party Services
- 
-</h3>
- <p>
+				// Populate Services Section
+				const servicesTemplate = document.getElementById("services-template");
+				const servicesClone = servicesTemplate.cloneNode(true);
+				servicesClone.id = "services";
+				servicesClone.querySelector('[data-field="title"]').textContent = siteData.services.title;
+				servicesClone.querySelector('[data-field="subtitle"]').textContent = siteData.services.subtitle;
+				servicesClone.querySelector('[data-field="topmateUrl"]').href = siteData.services.topmateUrl;
 
- This site may link to external services (Topmate, social media
- platforms). These services have their own privacy policies
- which govern their data handling practices.
- 
-</p>
- <h3
- style="
- color: var(--accent);
- margin-top: 24px;
- margin-bottom: 12px;
- "
- >
- Data Security
- 
-</h3>
- <p>
+				const servicesContainer = servicesClone.querySelector('[data-field="services-container"]');
+				servicesContainer.innerHTML = "";
 
- Since no personal data is collected or stored on this website,
- there are no data security concerns related to this site
- specifically.
- 
-</p>
- <h3
- style="
- color: var(--accent);
- margin-top: 24px;
- margin-bottom: 12px;
- "
- >
- Changes to Privacy Policy
- 
-</h3>
- <p>
+				siteData.services.offerings.forEach((service) => {
+					const serviceTemplate = document.getElementById("service-item-template");
+					const serviceClone = serviceTemplate.cloneNode(true);
+					serviceClone.removeAttribute("id");
+					serviceClone.querySelector('[data-field="icon"]').textContent = service.icon;
+					serviceClone.querySelector('[data-field="title"]').textContent = service.title;
+					serviceClone.querySelector('[data-field="description"]').textContent = service.description;
+					servicesContainer.appendChild(serviceClone);
+				});
 
- Any updates to this privacy policy will be reflected on this
- page with a new "last updated" date.
- 
-</p>
- <h3
- style="
- color: var(--accent);
- margin-top: 24px;
- margin-bottom: 12px;
- "
- >
- Contact
- 
-</h3>
- <p>
+				document.getElementById("services-container").appendChild(servicesClone);
 
- For privacy-related questions, contact me at:
- <a
- href="#"
- id="privacy-email-link"
- style="color: var(--accent)"
- >email</a
- >
- 
-</p>
- 
-</div>
- 
-</div>
- 
-</div>
- 
-</div>
- 
-</main>
- 
-</div>
- <script>
-  
-   // Site data in JSON format for easy management
-   const siteData = {
-   personal: {
-   name: "Devendra Pratap Singh",
-   title:
-   "Software Engineer / Engineering Manager • Backend • System Design",
-   logo: "DPS",
-   tagline: "I build scalable systems & explain them clearly.",
-   description:
-   "Engineer focused on backend systems, cloud migrations, and developer-friendly documentation. I prefer pragmatic trade-offs and clean architecture.",
-   location:
-   "Based in India • Vegetarian • Loves clear diagrams & concise explanations",
-   email: "dps.manit@gmail.com",
-   phone: "+91-9424475996",
-   resumeUrl: "./Devendra_Pratap_Singh_Resume.pdf",
-   },
-   about: {
-   title: "About Me",
-   subtitle: "Building scalable systems with clean architecture",
-   description: [
-   "I have 9+ years of experience in backend development, system design, and cloud migrations. My work focuses on building reliable, maintainable systems that scale for real-world traffic.",
-   "I emphasize pragmatic trade-offs, clear documentation, and developer experience. I aim to deliver robust solutions and improve engineering processes across teams.",
-   "Outside of work I contribute to side projects, explore new technologies, and mentor engineers through mock interviews and 1:1 sessions.",
-   ],
-   technologies: [
-   "Java",
-   "Python",
-   "Go",
-   "Node.js",
-   "Spring Boot",
-   "Django",
-   "PostgreSQL",
-   "Redis",
-   "Kafka",
-   "Docker",
-   "Kubernetes",
-   "GCP",
-   "AWS",
-   ],
-   interests: [
-   "System Design",
-   "Microservices",
-   "Performance",
-   "DevOps",
-   "Cloud Migrations",
-   "Observability",
-   ],
-   },
-   services: {
-   title: "Services I offer on Topmate",
-   subtitle:
-   "Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.",
-   topmateUrl: "#",
-   offerings: [
-   {
-   icon: "MI",
-   title: "Mock Interviews (60 min)",
-   description:
-   "Live, structured mock interviews with feedback — system design rounds, backend, and Java/Python deep dives. Includes written notes and improvement plan.",
-   },
-   {
-   icon: "1-1",
-   title: "One-on-One Mentorship (30/60 min)",
-   description:
-   "Focused sessions for career guidance, system design walkthroughs, and code review with actionable suggestions.",
-   },
-   {
-   icon: "QD",
-   title: "Quick Doubt Call (15–20 min)",
-   description:
-   "Short, focused calls to clear a single problem — debugging help, architecture questions, interview doubt clarifications.",
-   },
-   ],
-   },
-   projects: {
-   title: "Featured Projects",
-   subtitle:
-   "A selection of projects showcasing system design and engineering skills",
-   items: [
-   {
-   title: "Scalable Feed Generation System",
-   technologies: ["Java", "Redis", "Kafka"],
-   description:
-   "Built a high-throughput feed generation system handling 10M+ daily requests. Implemented real-time ranking algorithms, distributed caching, and event-driven architecture to ensure sub-200ms response times.",
-   achievements:
-   "60% reduction in latency, 5x increase in throughput, zero-downtime deployments",
-   },
-   {
-   title: "Cloud Migration & NFT Platform Re-architecture",
-   technologies: ["GCP", "Postgres", "Background Workers"],
-   description:
-   "Led cloud migration from AWS to GCP and re-architected an NFT platform to use the database as the primary source of truth with background synchronization for blockchain data.",
-   achievements:
-   "Reduced transaction times from minutes to seconds; implemented secure secret management with GCP Secret Manager",
-   },
-   {
-   title: "Real-time Analytics Pipeline",
-   technologies: ["Python", "Apache Spark", "ClickHouse"],
-   description:
-   "Developed a real-time analytics pipeline handling TBs of daily data with optimized time-series aggregation and automated alerting.",
-   achievements:
-   "Reduced analytics latency from hours to minutes; maintained 99.9% data accuracy",
-   },
-   ],
-   },
-   experience: {
-   title: "Professional Experience",
-   subtitle:
-   "Building scalable systems and leading technical initiatives",
-   items: [
-   {
-   role: "Engineering Manager",
-   company: "Faze Technologies (Official Cricket NFT Provider)",
-   period: "April 2024 - Present",
-   technologies: [
-   "GCP",
-   "Postgres",
-   "Background Workers",
-   "Secret Manager",
-   ],
-   achievements: [
-   "Led migration from AWS to GCP improving scalability and cost efficiency",
-   "Re-architected system to decouple blockchain dependency, making DB the source of truth and implementing background sync for NFTs and funds",
-   "Designed and implemented an accounting system to track user transactions, platform revenue and fees",
-   "Integrated GCP Secret Manager for secure handling of configuration and secrets",
-   ],
-   },
-   {
-   role: "Senior Software Engineer",
-   company: "Zynga Gaming",
-   period: "Sept 2018 - July 2023",
-   technologies: [
-   "C++/JS tooling",
-   "Backend automation",
-   "Performance Optimization",
-   ],
-   achievements: [
-   "Optimized in-game memory usage drastically via asset data refactor",
-   "Reduced pre-release execution times from ~2 hours to 15 minutes through process improvements",
-   "Designed dynamic modular game-settings and automation for reskin feature",
-   "Built systems to run custom scripts during game load without new releases",
-   ],
-   },
-   {
-   role: "Software Engineer",
-   company: "BookMyShow",
-   period: "Nov 2016 - Sept 2018",
-   technologies: ["Java", "LDAP", "Middleware"],
-   achievements: [
-   "Engineered an Identity Access Management (IAM) tool with LDAP",
-   "Developed a Universal Access Portal for internal projects",
-   "Built a real-time cinema health monitoring tool",
-   "Led development of a Queue Manager middleware with monitoring",
-   ],
-   },
-   {
-   role: "Software Engineer",
-   company: "Incture Technologies",
-   period: "July 2015 - Oct 2016",
-   technologies: ["Integration", "Mobile services", "SAP"],
-   achievements: [
-   "Contributed to systems for seamless data access from SAP to non-SAP backends",
-   "Worked on mobile client for SAP PO monitoring and HR Admin module features",
-   ],
-   },
-   ],
-   },
-   sideProjects: {
-   title: "Side Projects",
-   subtitle: "Independent explorations, utilities & experiments",
-   items: [
-   {
-   name: "Object Data Model for Google Sheets",
-   year: 2018,
-   description:
-   "Python library to fetch Google Sheets data and convert it into class objects resembling Django ORM models.",
-   technologies: ["Python", "Google Sheets API"],
-   },
-   {
-   name: "Windows Phone App for GeeksforGeeks",
-   year: 2014,
-   description:
-   "Mobile client providing GeeksforGeeks content with offline access (legacy project).",
-   technologies: ["C#", "Windows Phone"],
-   },
-   {
-   name: "Facebook Logout Script",
-   year: 2013,
-   description:
-   "Browser userscript enabling instant logout using a keyboard shortcut.",
-   technologies: ["JavaScript", "GreaseMonkey"],
-   },
-   ],
-   },
-   education: {
-   degree: "B.Tech in Computer Science and Engineering",
-   institution: "National Institute of Technology, Bhopal",
-   period: "2011 - 2015",
-   grade: "6.4 CGPA",
-   },
-   skills: {
-   primary: ["Java", "Python", "Go", "Node.js", "Spring Boot", "Django"],
-   databases: ["PostgreSQL", "Redis", "MongoDB"],
-   devops: ["Docker", "Kubernetes", "GCP", "AWS"],
-   others: ["Kafka", "Observability", "Performance Tuning"],
-   },
-   socialLinks: [
-   {
-   name: "LinkedIn",
-   url: "https://www.linkedin.com/in/devendrapratap",
-   icon: "linkedin",
-   },
-   {
-   name: "GitHub",
-   url: "https://github.com/devendrapratap02",
-   icon: "github",
-   },
-   {
-   name: "Twitter",
-   url: "https://twitter.com/_devendrapratap",
-   icon: "twitter",
-   },
-   {
-   name: "Medium",
-   url: "https://medium.com/@devendrapratap02",
-   icon: "medium",
-   },
-   ],
-   };
-   // Function to create chips/tags
-   function createChip(text) {
-   return `<span class="chip">
-    ${text}
-  </span>`;
-   }
-   // Function to create social icons
-   function createSocialIcon(link) {
-   const icons = {
-   linkedin:
-   '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-  
-  ',
-   github:
-   '<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-  
-  ',
-   twitter:
-   '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.080l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-  
-  ',
-   medium:
-   '<path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-  
-  ',
-   };
-   return `
-   <a href="${link.url}" title="${link.name}" aria-label="${
-   link.name
-   }" style="text-decoration:none">
-   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-    
-     ${icons[link.icon]}
-     
-  </svg>
-   
-</a>
- `;
- }
- // Function to populate sections using template cloning
- function populateSections() {
- // Update personal info
- document.querySelector(".logo").textContent = siteData.personal.logo;
- document.querySelector(".brand > div > div:first-child").textContent =
- siteData.personal.name;
- document.querySelector(".brand > div > div:last-child").textContent =
- siteData.personal.title;
- document.querySelector("h1").textContent = siteData.personal.tagline;
- document.querySelector(".lead").textContent =
- siteData.personal.description;
- document.querySelector(".hero-left > div:last-child").textContent =
- siteData.personal.location;
- // Populate Services Section
- const servicesTemplate = document.getElementById("services-template");
- const servicesClone = servicesTemplate.cloneNode(true);
- servicesClone.id = "services";
- servicesClone.querySelector('[data-field="title"]').textContent =
- siteData.services.title;
- servicesClone.querySelector('[data-field="subtitle"]').textContent =
- siteData.services.subtitle;
- servicesClone.querySelector('[data-field="topmateUrl"]').href =
- siteData.services.topmateUrl;
- const servicesContainer = servicesClone.querySelector(
- '[data-field="services-container"]'
- );
- servicesContainer.innerHTML = "";
- siteData.services.offerings.forEach((service) => {
- const serviceTemplate = document.getElementById(
- "service-item-template"
- );
- const serviceClone = serviceTemplate.cloneNode(true);
- serviceClone.removeAttribute("id");
- serviceClone.querySelector('[data-field="icon"]').textContent =
- service.icon;
- serviceClone.querySelector('[data-field="title"]').textContent =
- service.title;
- serviceClone.querySelector('[data-field="description"]').textContent =
- service.description;
- servicesContainer.appendChild(serviceClone);
- });
- document
- .getElementById("services-container")
- .appendChild(servicesClone);
- // Populate About Section
- const aboutTemplate = document.getElementById("about-template");
- const aboutClone = aboutTemplate.cloneNode(true);
- aboutClone.id = "about";
- aboutClone.querySelector('[data-field="title"]').textContent =
- siteData.about.title;
- aboutClone.querySelector('[data-field="subtitle"]').textContent =
- siteData.about.subtitle;
- const descContainer = aboutClone.querySelector(
- '[data-field="description-container"]'
- );
- descContainer.innerHTML = siteData.about.description
- .map((p) => `<p style="margin:0 0 16px 0;line-height:1.6">
-  ${p}
-</p>`)
- .join("")
- .replace(/(<p[^>
-  ]*>)([^<]*<\/p>
-    )$/, (match, opening, content) => {
-     return opening.replace("margin:0 0 16px 0", "margin:0") + content;
-     });
-     aboutClone.querySelector('[data-field="technologies"]').innerHTML =
-     siteData.about.technologies.map(createChip).join("");
-     aboutClone.querySelector('[data-field="interests"]').innerHTML =
-     siteData.about.interests.map(createChip).join("");
-     document.getElementById("about-container").appendChild(aboutClone);
-     // Populate Projects Section
-     const projectsTemplate = document.getElementById("projects-template");
-     const projectsClone = projectsTemplate.cloneNode(true);
-     projectsClone.id = "projects";
-     projectsClone.querySelector('[data-field="title"]').textContent =
-     siteData.projects.title;
-     projectsClone.querySelector('[data-field="subtitle"]').textContent =
-     siteData.projects.subtitle;
-     const projectsContainer = projectsClone.querySelector(
-     '[data-field="projects-container"]'
-     );
-     projectsContainer.innerHTML = "";
-     siteData.projects.items.forEach((project) => {
-     const projectTemplate = document.getElementById(
-     "project-item-template"
-     );
-     const projectClone = projectTemplate.cloneNode(true);
-     projectClone.removeAttribute("id");
-     projectClone.querySelector('[data-field="title"]').textContent =
-     project.title;
-     projectClone.querySelector('[data-field="description"]').textContent =
-     project.description;
-     projectClone.querySelector(
-     '[data-field="achievements"]'
-     ).textContent = project.achievements;
-     projectClone.querySelector('[data-field="technologies"]').innerHTML =
-     project.technologies.map(createChip).join("");
-     projectsContainer.appendChild(projectClone);
-     });
-     document
-     .getElementById("projects-container")
-     .appendChild(projectsClone);
-     // Populate Side Projects Section
-     if (
-     siteData.sideProjects &&
-     siteData.sideProjects.items &&
-     siteData.sideProjects.items.length
-     ) {
-     const spTemplate = document.getElementById("side-projects-template");
-     const spClone = spTemplate.cloneNode(true);
-     spClone.id = "side-projects";
-     spClone.querySelector('[data-field="title"]').textContent =
-     siteData.sideProjects.title || "Side Projects";
-     if (siteData.sideProjects.subtitle) {
-     const subtitleEl = spClone.querySelector('[data-field="subtitle"]');
-     if (subtitleEl)
-     subtitleEl.textContent = siteData.sideProjects.subtitle;
-     }
-     const spContainer = spClone.querySelector(
-     '[data-field="side-projects-container"]'
-     );
-     spContainer.innerHTML = "";
-     siteData.sideProjects.items.forEach((sp) => {
-     const spItemTemplate = document.getElementById(
-     "side-project-item-template"
-     );
-     const spItem = spItemTemplate.cloneNode(true);
-     spItem.removeAttribute("id");
-     const nameEl = spItem.querySelector('[data-field="name"]');
-     if (sp.link) {
-     nameEl.innerHTML = `<a href="${sp.link}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">
-      ${sp.name}
-    </a>`;
-     } else {
-     nameEl.textContent = sp.name;
-     }
-     spItem.querySelector('[data-field="year"]').textContent =
-     sp.year || "";
-     const techEl = spItem.querySelector('[data-field="technologies"]');
-     if (sp.technologies && sp.technologies.length) {
-     techEl.innerHTML = sp.technologies.map(createChip).join("");
-     } else {
-     techEl.remove();
-     }
-     spItem.querySelector('[data-field="description"]').textContent =
-     sp.description || "";
-     spContainer.appendChild(spItem);
-     });
-     document
-     .getElementById("side-projects-container")
-     .appendChild(spClone);
-     }
-     // Populate Experience Section
-     const experienceTemplate = document.getElementById(
-     "experience-template"
-     );
-     const experienceClone = experienceTemplate.cloneNode(true);
-     experienceClone.id = "experience";
-     experienceClone.querySelector('[data-field="title"]').textContent =
-     siteData.experience.title;
-     experienceClone.querySelector('[data-field="subtitle"]').textContent =
-     siteData.experience.subtitle;
-     const experienceContainer = experienceClone.querySelector(
-     '[data-field="experience-container"]'
-     );
-     experienceContainer.innerHTML = "";
-     siteData.experience.items.forEach((exp) => {
-     const expTemplate = document.getElementById(
-     "experience-item-template"
-     );
-     const expClone = expTemplate.cloneNode(true);
-     expClone.removeAttribute("id");
-     expClone.querySelector('[data-field="role"]').textContent = exp.role;
-     expClone.querySelector('[data-field="company"]').textContent =
-     exp.company;
-     expClone.querySelector('[data-field="period"]').textContent =
-     exp.period;
-     expClone.querySelector('[data-field="technologies"]').innerHTML =
-     exp.technologies.map(createChip).join("");
-     expClone.querySelector('[data-field="achievements"]').innerHTML =
-     exp.achievements
-     .map((achievement) => `<li>
-      ${achievement}
-    </li>`)
-     .join("");
-     experienceContainer.appendChild(expClone);
-     });
-     document
-     .getElementById("experience-container")
-     .appendChild(experienceClone);
-     // Update social links in header
-     const headerSocials = document.querySelector(".socials");
-     headerSocials.innerHTML = siteData.socialLinks
-     .map(createSocialIcon)
-     .join("");
-     // Update CTA buttons with contact info
-     const emailLink = document.querySelector(".cta a.btn-primary");
-     const resumeLink = document.querySelector(".cta a.btn-ghost");
-     emailLink.href = `mailto:${siteData.personal.email}`;
-     resumeLink.href = siteData.personal.resumeUrl;
-     }
-     // Initialize the page
-     document.addEventListener("DOMContentLoaded", function () {
-     populateSections();
-     // Set privacy policy date
-     document.getElementById("privacy-date").textContent =
-     new Date().toLocaleDateString();
-     // Update privacy email link
-     const privacyEmailLink = document.getElementById("privacy-email-link");
-     if (privacyEmailLink) {
-     privacyEmailLink.href = `mailto:${siteData.personal.email}`;
-     privacyEmailLink.textContent = siteData.personal.email;
-     }
-     });
-     // Privacy modal toggle
-     function togglePrivacy() {
-     const modal = document.getElementById("privacy-modal");
-     const isOpen = modal.style.display !== "none";
-     modal.style.display = isOpen ? "none" : "block";
-     if (!isOpen) {
-     // Add ESC key listener when opening
-     const escHandler = function (e) {
-     if (e.key === "Escape") {
-     togglePrivacy();
-     document.removeEventListener("keydown", escHandler);
-     }
-     };
-     document.addEventListener("keydown", escHandler);
-     // Close on background click
-     modal.onclick = function (e) {
-     if (e.target === modal) {
-     togglePrivacy();
-     document.removeEventListener("keydown", escHandler);
-     }
-     };
-     }
-     }
-     // Insert current year
-     document.getElementById("year").textContent = new Date().getFullYear();
-     // Theme toggle (icon) — swaps sun/moon icon and data-theme attribute
-     const themeBtn = document.getElementById("themeBtn");
-     const themeIcon = document.getElementById("themeIcon");
-     const root = document.body;
-     let theme = "light";
-     function setIcon(t) {
-     // t: 'light' means show moon (to switch to dark), 'dark' shows sun
-     if (t === "light") {
-     themeIcon.innerHTML =
-     '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    
-    '; // moon
-     } else {
-     themeIcon.innerHTML =
-     '<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4M7 12a5 5 0 1 0 10 0a5 5 0 0 0-10 0z"/>
-    
-    '; // sun
-     }
-     }
-     setIcon(theme);
-     themeBtn.addEventListener("click", () => {
-     theme = theme === "light" ? "dark" : "light";
-     document.body.setAttribute("data-theme", theme);
-     setIcon(theme);
-     });
-     
-  </script>
-   
-</body>
+				// Populate About Section
+				const aboutTemplate = document.getElementById("about-template");
+				const aboutClone = aboutTemplate.cloneNode(true);
+				aboutClone.id = "about";
+				aboutClone.querySelector('[data-field="title"]').textContent = siteData.about.title;
+				aboutClone.querySelector('[data-field="subtitle"]').textContent = siteData.about.subtitle;
 
+				const descContainer = aboutClone.querySelector('[data-field="description-container"]');
+				descContainer.innerHTML = siteData.about.description
+					.map((p) => `<p style="margin:0 0 16px 0;line-height:1.6">${p}</p>`)
+					.join("")
+					.replace(/(<p[^>]*>)([^<]*<\/p>)$/, (match, opening, content) => {
+						return opening.replace("margin:0 0 16px 0", "margin:0") + content;
+					});
+
+				aboutClone.querySelector('[data-field="technologies"]').innerHTML = siteData.about.technologies
+					.map(createChip)
+					.join("");
+				aboutClone.querySelector('[data-field="interests"]').innerHTML = siteData.about.interests
+					.map(createChip)
+					.join("");
+
+				document.getElementById("about-container").appendChild(aboutClone);
+
+				// Populate Projects Section
+				const projectsTemplate = document.getElementById("projects-template");
+				const projectsClone = projectsTemplate.cloneNode(true);
+				projectsClone.id = "projects";
+				projectsClone.querySelector('[data-field="title"]').textContent = siteData.projects.title;
+				projectsClone.querySelector('[data-field="subtitle"]').textContent = siteData.projects.subtitle;
+
+				const projectsContainer = projectsClone.querySelector('[data-field="projects-container"]');
+				projectsContainer.innerHTML = "";
+
+				siteData.projects.items.forEach((project) => {
+					const projectTemplate = document.getElementById("project-item-template");
+					const projectClone = projectTemplate.cloneNode(true);
+					projectClone.removeAttribute("id");
+					projectClone.querySelector('[data-field="title"]').textContent = project.title;
+					projectClone.querySelector('[data-field="description"]').textContent = project.description;
+					projectClone.querySelector('[data-field="achievements"]').textContent = project.achievements;
+					projectClone.querySelector('[data-field="technologies"]').innerHTML = project.technologies
+						.map(createChip)
+						.join("");
+					projectsContainer.appendChild(projectClone);
+				});
+
+				document.getElementById("projects-container").appendChild(projectsClone);
+
+				// Populate Side Projects Section
+				if (siteData.sideProjects && siteData.sideProjects.items && siteData.sideProjects.items.length) {
+					const spTemplate = document.getElementById("side-projects-template");
+					const spClone = spTemplate.cloneNode(true);
+					spClone.id = "side-projects";
+					spClone.querySelector('[data-field="title"]').textContent = siteData.sideProjects.title || "Side Projects";
+					if (siteData.sideProjects.subtitle) {
+						const subtitleEl = spClone.querySelector('[data-field="subtitle"]');
+						if (subtitleEl) subtitleEl.textContent = siteData.sideProjects.subtitle;
+					}
+					const spContainer = spClone.querySelector('[data-field="side-projects-container"]');
+					spContainer.innerHTML = "";
+					siteData.sideProjects.items.forEach((sp) => {
+						const spItemTemplate = document.getElementById("side-project-item-template");
+						const spItem = spItemTemplate.cloneNode(true);
+						spItem.removeAttribute("id");
+						const nameEl = spItem.querySelector('[data-field="name"]');
+						if (sp.link) {
+							nameEl.innerHTML = `<a href="${sp.link}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${sp.name}</a>`;
+						} else {
+							nameEl.textContent = sp.name;
+						}
+						spItem.querySelector('[data-field="year"]').textContent = sp.year || "";
+						const techEl = spItem.querySelector('[data-field="technologies"]');
+						if (sp.technologies && sp.technologies.length) {
+							techEl.innerHTML = sp.technologies.map(createChip).join("");
+						} else {
+							techEl.remove();
+						}
+						spItem.querySelector('[data-field="description"]').textContent = sp.description || "";
+						spContainer.appendChild(spItem);
+					});
+					document.getElementById("side-projects-container").appendChild(spClone);
+				}
+
+				// Populate Experience Section
+				const experienceTemplate = document.getElementById("experience-template");
+				const experienceClone = experienceTemplate.cloneNode(true);
+				experienceClone.id = "experience";
+				experienceClone.querySelector('[data-field="title"]').textContent = siteData.experience.title;
+				experienceClone.querySelector('[data-field="subtitle"]').textContent = siteData.experience.subtitle;
+
+				const experienceContainer = experienceClone.querySelector('[data-field="experience-container"]');
+				experienceContainer.innerHTML = "";
+
+				siteData.experience.items.forEach((exp) => {
+					const expTemplate = document.getElementById("experience-item-template");
+					const expClone = expTemplate.cloneNode(true);
+					expClone.removeAttribute("id");
+					expClone.querySelector('[data-field="role"]').textContent = exp.role;
+					expClone.querySelector('[data-field="company"]').textContent = exp.company;
+					expClone.querySelector('[data-field="period"]').textContent = exp.period;
+					expClone.querySelector('[data-field="technologies"]').innerHTML = exp.technologies.map(createChip).join("");
+					expClone.querySelector('[data-field="achievements"]').innerHTML = exp.achievements
+						.map((achievement) => `<li>${achievement}</li>`)
+						.join("");
+					experienceContainer.appendChild(expClone);
+				});
+
+				document.getElementById("experience-container").appendChild(experienceClone);
+
+				// Update social links in header
+				const headerSocials = document.querySelector(".socials");
+				headerSocials.innerHTML = siteData.socialLinks.map(createSocialIcon).join("");
+
+				// Update CTA buttons with contact info
+				const emailLink = document.querySelector(".cta a.btn-primary");
+				const resumeLink = document.querySelector(".cta a.btn-ghost");
+
+				emailLink.href = `mailto:${siteData.personal.email}`;
+				resumeLink.href = siteData.personal.resumeUrl;
+			}
+
+			// Initialize the page
+			document.addEventListener("DOMContentLoaded", function () {
+				populateSections();
+				// Set privacy policy date
+				document.getElementById("privacy-date").textContent = new Date().toLocaleDateString();
+
+				// Update privacy email link
+				const privacyEmailLink = document.getElementById("privacy-email-link");
+				if (privacyEmailLink) {
+					privacyEmailLink.href = `mailto:${siteData.personal.email}`;
+					privacyEmailLink.textContent = siteData.personal.email;
+				}
+			});
+
+			// Privacy modal toggle
+			function togglePrivacy() {
+				const modal = document.getElementById("privacy-modal");
+				const isOpen = modal.style.display !== "none";
+				modal.style.display = isOpen ? "none" : "block";
+
+				if (!isOpen) {
+					// Add ESC key listener when opening
+					const escHandler = function (e) {
+						if (e.key === "Escape") {
+							togglePrivacy();
+							document.removeEventListener("keydown", escHandler);
+						}
+					};
+					document.addEventListener("keydown", escHandler);
+
+					// Close on background click
+					modal.onclick = function (e) {
+						if (e.target === modal) {
+							togglePrivacy();
+							document.removeEventListener("keydown", escHandler);
+						}
+					};
+				}
+			}
+
+			// Insert current year
+			document.getElementById("year").textContent = new Date().getFullYear();
+
+			// Theme toggle (icon) — swaps sun/moon icon and data-theme attribute
+			const themeBtn = document.getElementById("themeBtn");
+			const themeIcon = document.getElementById("themeIcon");
+			const root = document.body;
+			let theme = "light";
+
+			function setIcon(t) {
+				// t: 'light' means show moon (to switch to dark), 'dark' shows sun
+				if (t === "light") {
+					themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'; // moon
+				} else {
+					themeIcon.innerHTML =
+						'<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4M7 12a5 5 0 1 0 10 0a5 5 0 0 0-10 0z"/>'; // sun
+				}
+			}
+
+			setIcon(theme);
+			themeBtn.addEventListener("click", () => {
+				theme = theme === "light" ? "dark" : "light";
+				document.body.setAttribute("data-theme", theme);
+				setIcon(theme);
+			});
+		</script>
+	</body>
 </html>

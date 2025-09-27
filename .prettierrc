@@ -1,0 +1,18 @@
+{
+  "useTabs": true,
+  "printWidth": 120,
+  "bracketSameLine": true,
+  "htmlWhitespaceSensitivity": "css",
+  "singleAttributePerLine": false,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "useTabs": true,
+        "printWidth": 120,
+        "bracketSameLine": true,
+        "htmlWhitespaceSensitivity": "css"
+      }
+    }
+  ]
+}
