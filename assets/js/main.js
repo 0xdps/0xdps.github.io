@@ -422,7 +422,7 @@ function populateSections() {
 
 // Helper function to create chip elements
 function createChip(text) {
-	return `<span style="background: rgba(20, 184, 166, 0.12); color: var(--accent); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 500;">${text}</span>`;
+	return `<span class="tech-chip">${text}</span>`;
 }
 
 // Initialize the application
