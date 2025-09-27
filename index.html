@@ -795,132 +795,135 @@
               left: 50%;
               transform: translate(-50%, -50%);
               background: var(--card);
-              padding: 32px;
               border-radius: 16px;
               max-width: 600px;
               max-height: 80vh;
-              overflow-y: auto;
+              overflow: hidden;
+              box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             "
           >
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-              "
-            >
-              <h2 style="margin: 0; color: var(--text)">Privacy Policy</h2>
-              <button
-                onclick="togglePrivacy()"
+            <div style="padding: 32px; max-height: 80vh; overflow-y: auto">
+              <div
                 style="
-                  background: none;
-                  border: none;
-                  font-size: 24px;
-                  cursor: pointer;
-                  color: var(--muted);
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 20px;
                 "
               >
-                &times;
-              </button>
-            </div>
-
-            <div style="color: var(--text); line-height: 1.6">
-              <p>
-                <strong>Last updated:</strong> <span id="privacy-date"></span>
-              </p>
-
-              <h3
-                style="
-                  color: var(--accent);
-                  margin-top: 24px;
-                  margin-bottom: 12px;
-                "
-              >
-                Information Collection
-              </h3>
-              <p>
-                This website is a static portfolio site. I don't collect, store,
-                or process any personal data. No cookies, analytics, or tracking
-                scripts are used.
-              </p>
-
-              <h3
-                style="
-                  color: var(--accent);
-                  margin-top: 24px;
-                  margin-bottom: 12px;
-                "
-              >
-                Contact Information
-              </h3>
-              <p>
-                When you contact me via email or social media links, your
-                communication is handled according to the respective platform's
-                privacy policies (Gmail, LinkedIn, GitHub, etc.).
-              </p>
-
-              <h3
-                style="
-                  color: var(--accent);
-                  margin-top: 24px;
-                  margin-bottom: 12px;
-                "
-              >
-                Third-Party Services
-              </h3>
-              <p>
-                This site may link to external services (Topmate, social media
-                platforms). These services have their own privacy policies which
-                govern their data handling practices.
-              </p>
-
-              <h3
-                style="
-                  color: var(--accent);
-                  margin-top: 24px;
-                  margin-bottom: 12px;
-                "
-              >
-                Data Security
-              </h3>
-              <p>
-                Since no personal data is collected or stored on this website,
-                there are no data security concerns related to this site
-                specifically.
-              </p>
-
-              <h3
-                style="
-                  color: var(--accent);
-                  margin-top: 24px;
-                  margin-bottom: 12px;
-                "
-              >
-                Changes to Privacy Policy
-              </h3>
-              <p>
-                Any updates to this privacy policy will be reflected on this
-                page with a new "last updated" date.
-              </p>
-
-              <h3
-                style="
-                  color: var(--accent);
-                  margin-top: 24px;
-                  margin-bottom: 12px;
-                "
-              >
-                Contact
-              </h3>
-              <p>
-                For privacy-related questions, contact me at:
-                <a
-                  href="mailto:youremail@example.com"
-                  style="color: var(--accent)"
-                  >youremail@example.com</a
+                <h2 style="margin: 0; color: var(--text)">Privacy Policy</h2>
+                <button
+                  onclick="togglePrivacy()"
+                  style="
+                    background: none;
+                    border: none;
+                    font-size: 24px;
+                    cursor: pointer;
+                    color: var(--muted);
+                  "
                 >
-              </p>
+                  &times;
+                </button>
+              </div>
+
+              <div style="color: var(--text); line-height: 1.6">
+                <p>
+                  <strong>Last updated:</strong> <span id="privacy-date"></span>
+                </p>
+
+                <h3
+                  style="
+                    color: var(--accent);
+                    margin-top: 24px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  Information Collection
+                </h3>
+                <p>
+                  This website is a static portfolio site. I don't collect,
+                  store, or process any personal data. No cookies, analytics, or
+                  tracking scripts are used.
+                </p>
+
+                <h3
+                  style="
+                    color: var(--accent);
+                    margin-top: 24px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  Contact Information
+                </h3>
+                <p>
+                  When you contact me via email or social media links, your
+                  communication is handled according to the respective
+                  platform's privacy policies (Gmail, LinkedIn, GitHub, etc.).
+                </p>
+
+                <h3
+                  style="
+                    color: var(--accent);
+                    margin-top: 24px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  Third-Party Services
+                </h3>
+                <p>
+                  This site may link to external services (Topmate, social media
+                  platforms). These services have their own privacy policies
+                  which govern their data handling practices.
+                </p>
+
+                <h3
+                  style="
+                    color: var(--accent);
+                    margin-top: 24px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  Data Security
+                </h3>
+                <p>
+                  Since no personal data is collected or stored on this website,
+                  there are no data security concerns related to this site
+                  specifically.
+                </p>
+
+                <h3
+                  style="
+                    color: var(--accent);
+                    margin-top: 24px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  Changes to Privacy Policy
+                </h3>
+                <p>
+                  Any updates to this privacy policy will be reflected on this
+                  page with a new "last updated" date.
+                </p>
+
+                <h3
+                  style="
+                    color: var(--accent);
+                    margin-top: 24px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  Contact
+                </h3>
+                <p>
+                  For privacy-related questions, contact me at:
+                  <a
+                    href="#"
+                    id="privacy-email-link"
+                    style="color: var(--accent)"
+                    >email</a
+                  >
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1415,18 +1418,36 @@
         // Set privacy policy date
         document.getElementById("privacy-date").textContent =
           new Date().toLocaleDateString();
+
+        // Update privacy email link
+        const privacyEmailLink = document.getElementById("privacy-email-link");
+        if (privacyEmailLink) {
+          privacyEmailLink.href = `mailto:${siteData.personal.email}`;
+          privacyEmailLink.textContent = siteData.personal.email;
+        }
       });
 
       // Privacy modal toggle
       function togglePrivacy() {
         const modal = document.getElementById("privacy-modal");
-        modal.style.display = modal.style.display === "none" ? "block" : "none";
+        const isOpen = modal.style.display !== "none";
+        modal.style.display = isOpen ? "none" : "block";
 
-        // Close on background click
-        if (modal.style.display === "block") {
+        if (!isOpen) {
+          // Add ESC key listener when opening
+          const escHandler = function (e) {
+            if (e.key === "Escape") {
+              togglePrivacy();
+              document.removeEventListener("keydown", escHandler);
+            }
+          };
+          document.addEventListener("keydown", escHandler);
+
+          // Close on background click
           modal.onclick = function (e) {
             if (e.target === modal) {
               togglePrivacy();
+              document.removeEventListener("keydown", escHandler);
             }
           };
         }
