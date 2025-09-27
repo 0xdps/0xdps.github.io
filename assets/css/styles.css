@@ -1,0 +1,421 @@
+/* Site Styles - Modern Portfolio Design */
+
+/* CSS Variables for theming */
+:root {
+	--bg: #f8fafc;
+	--card: #ffffff;
+	--text: #0f172a;
+	--muted: #6b7280;
+	--accent: #14b8a6;
+	--radius: 14px;
+}
+
+[data-theme="dark"] {
+	--bg: #0b1220;
+	--card: #0f1724;
+	--text: #e6eef8;
+	--muted: #9aa6b2;
+	--accent: #5eead4;
+}
+
+/* Base styles */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family:
+		Inter,
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		"Segoe UI",
+		Roboto,
+		"Helvetica Neue",
+		Arial;
+	color: var(--text);
+	background: var(--bg);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Layout components */
+.container {
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 28px;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.logo {
+	width: 56px;
+	height: 56px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #14b8a6, #123524);
+	color: white;
+	font-weight: 700;
+}
+
+.socials {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.icon-btn {
+	background: transparent;
+	border: 0;
+	padding: 8px;
+	border-radius: 8px;
+	cursor: pointer;
+	color: var(--muted);
+	transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+	color: var(--text);
+}
+
+.socials a {
+	transition: color 0.2s ease;
+	color: var(--muted);
+}
+
+.socials a:hover {
+	color: var(--text);
+}
+
+/* Hero section */
+.hero {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	align-items: center;
+	margin-top: 28px;
+}
+
+.hero-left {
+	flex: 1;
+	min-width: 260px;
+}
+
+.hero-right {
+	width: 180px;
+	height: 180px;
+	border-radius: 16px;
+	background: linear-gradient(135deg, #14b8a6, #123524);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+h1 {
+	font-size: 28px;
+	margin: 0;
+}
+
+p.lead {
+	margin-top: 12px;
+	color: var(--muted);
+}
+
+.cta {
+	margin-top: 16px;
+	display: flex;
+	gap: 10px;
+}
+
+.btn {
+	padding: 10px 14px;
+	border-radius: 10px;
+	border: 0;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.btn-primary {
+	background: var(--accent);
+	color: white;
+}
+
+.btn-ghost {
+	background: transparent;
+	border: 1px solid rgba(100, 100, 120, 0.08);
+	color: var(--text);
+}
+
+/* Card components */
+.card {
+	background: var(--card);
+	padding: 18px;
+	border-radius: var(--radius);
+	box-shadow: 0 6px 20px rgba(11, 17, 26, 0.06);
+	border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 14px;
+	margin-top: 14px;
+}
+
+.chip {
+	display: inline-block;
+	padding: 6px 10px;
+	border-radius: 8px;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	font-size: 13px;
+	color: var(--muted);
+}
+
+/* Section styles */
+section {
+	margin-top: 22px;
+}
+
+.two-col {
+	display: grid;
+	grid-template-columns: 1fr 340px;
+	gap: 18px;
+}
+
+/* Project components */
+.project {
+	padding: 12px;
+	border-radius: 12px;
+	border: 1px solid rgba(0, 0, 0, 0.03);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+}
+
+.project h3 {
+	margin: 0;
+	font-size: 16px;
+}
+
+.project p {
+	margin: 8px 0 0;
+	color: var(--muted);
+	font-size: 14px;
+}
+
+/* List styles */
+ol {
+	padding-left: 18px;
+	margin: 8px 0;
+	color: var(--muted);
+}
+
+/* Form components */
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+input,
+textarea {
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	background: transparent;
+	color: var(--text);
+}
+
+textarea {
+	min-height: 120px;
+}
+
+footer {
+	margin-top: 28px;
+	text-align: center;
+	color: var(--muted);
+	font-size: 13px;
+}
+
+footer a {
+	color: var(--accent);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+/* Services section */
+.services {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.service-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.service-item h4 {
+	margin: 0;
+	font-size: 15px;
+}
+
+.service-desc {
+	color: var(--muted);
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+/* Custom scrollbar styling for cross-browser consistency */
+.scrollable-content {
+	scrollbar-width: thin;
+	scrollbar-color: var(--muted) transparent;
+}
+
+.scrollable-content::-webkit-scrollbar {
+	width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+	background: var(--muted);
+	border-radius: 4px;
+	opacity: 0.6;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+	background: var(--text);
+	opacity: 0.8;
+}
+
+/* Scrollbar for dark theme */
+[data-theme="dark"] .scrollable-content {
+	scrollbar-color: var(--muted) transparent;
+}
+
+[data-theme="dark"] .scrollable-content::-webkit-scrollbar-thumb {
+	background: var(--muted);
+}
+
+[data-theme="dark"] .scrollable-content::-webkit-scrollbar-thumb:hover {
+	background: var(--accent);
+}
+
+/* Privacy modal */
+#privacy-modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
+}
+
+#privacy-modal .modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: var(--card);
+	border-radius: 16px;
+	max-width: 600px;
+	max-height: 80vh;
+	overflow: hidden;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+#privacy-modal .modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+#privacy-modal h2 {
+	margin: 0;
+	color: var(--text);
+}
+
+#privacy-modal .close-btn {
+	background: none;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+	color: var(--muted);
+}
+
+#privacy-modal .modal-body {
+	color: var(--text);
+	line-height: 1.6;
+}
+
+#privacy-modal h3 {
+	color: var(--accent);
+	margin-top: 24px;
+	margin-bottom: 12px;
+}
+
+#privacy-modal a {
+	color: var(--accent);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+	.grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.two-col {
+		grid-template-columns: 1fr;
+	}
+
+	.socials {
+		display: none;
+	}
+
+	/* Mobile adjustments for detailed sections */
+	#about > div:first-child > div:first-child {
+		display: grid !important;
+		grid-template-columns: 1fr !important;
+		gap: 16px !important;
+	}
+
+	#projects .project,
+	#experience > div:last-child > div {
+		margin-bottom: 16px;
+	}
+
+	#projects .project > div:first-child,
+	#experience > div:last-child > div > div:first-child {
+		display: block !important;
+	}
+
+	#projects .project > div:first-child > div:last-child,
+	#experience > div:last-child > div > div:first-child > div:last-child {
+		margin-top: 8px !important;
+	}
+}
