@@ -243,7 +243,7 @@ function populateSections() {
 					${siteData.services.offerings
 						.map(
 							(service) => `
-						<div class="service-item" style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border);">
+						<div class="service-item">
 							<div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(20, 184, 166, 0.12); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); flex-shrink: 0;">
 								${service.icon}
 							</div>
