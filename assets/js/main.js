@@ -139,11 +139,281 @@ function getSocialIcon(iconName) {
 // Make togglePrivacy available globally for existing HTML
 window.togglePrivacy = togglePrivacy;
 
-// Wait for DOM to be ready
-if (document.readyState === "loading") {
-	document.addEventListener("DOMContentLoaded", initializeApp);
-} else {
-	initializeApp();
+// Template cloning utilities
+function cloneTemplate(templateId) {
+	const template = document.getElementById(templateId);
+	if (!template) {
+		console.error(`Template ${templateId} not found`);
+		return null;
+	}
+	return template.cloneNode(true);
+}
+
+function populateElement(element, data, fieldName) {
+	const targetElement = element.querySelector(`[data-field="${fieldName}"]`);
+	if (targetElement) {
+		if (fieldName === "icon") {
+			targetElement.innerHTML = data;
+		} else {
+			targetElement.textContent = data;
+		}
+	}
+}
+
+function populateElementAttribute(element, data, fieldName, attribute) {
+	const targetElement = element.querySelector(`[data-field="${fieldName}"]`);
+	if (targetElement) {
+		targetElement.setAttribute(attribute, data);
+	}
+}
+
+function createChip(text) {
+	return `<span class="tech-chip">${text}</span>`;
+}
+
+// Content population using template cloning
+function populateSections() {
+	console.log("populateSections called, siteData available:", typeof siteData !== "undefined");
+
+	if (typeof siteData === "undefined") {
+		console.error("siteData is not available!");
+		return;
+	}
+
+	populateServicesSection();
+	populateAboutSection();
+	populateProjectsSection();
+	populateSideProjectsSection();
+	populateExperienceSection();
+}
+
+function populateServicesSection() {
+	const servicesContainer = document.getElementById("services-container");
+	if (!servicesContainer || !siteData.services) return;
+
+	// Clone the services template
+	const servicesSection = cloneTemplate("services-template");
+	if (!servicesSection) return;
+
+	// Remove the template ID and make visible
+	servicesSection.removeAttribute("id");
+	servicesSection.style.display = "block";
+
+	// Populate main services data
+	populateElement(servicesSection, siteData.services.title, "title");
+	populateElement(servicesSection, siteData.services.subtitle, "subtitle");
+	populateElementAttribute(servicesSection, siteData.services.topmateUrl, "topmateUrl", "href");
+
+	// Populate service items
+	const servicesListContainer = servicesSection.querySelector('[data-field="services-container"]');
+	if (servicesListContainer && siteData.services.offerings) {
+		// Clear existing content
+		servicesListContainer.innerHTML = "";
+
+		siteData.services.offerings.forEach((service, index) => {
+			const serviceItem = cloneTemplate("service-item-template");
+			if (!serviceItem) return;
+
+			serviceItem.removeAttribute("id");
+			serviceItem.style.display = "flex";
+
+			// Populate service item data
+			populateElement(serviceItem, service.icon, "icon");
+			populateElement(serviceItem, service.title, "title");
+			populateElement(serviceItem, service.description, "description");
+
+			// Add separator border for all but last item
+			if (index < siteData.services.offerings.length - 1) {
+				serviceItem.style.borderBottom = "1px solid var(--border)";
+				serviceItem.style.paddingBottom = "12px";
+				serviceItem.style.marginBottom = "12px";
+			}
+
+			servicesListContainer.appendChild(serviceItem);
+		});
+	}
+
+	// Append the populated section
+	servicesContainer.appendChild(servicesSection);
+}
+
+function populateAboutSection() {
+	const aboutContainer = document.getElementById("about-container");
+	if (!aboutContainer || !siteData.about) return;
+
+	// Clone the about template
+	const aboutSection = cloneTemplate("about-template");
+	if (!aboutSection) return;
+
+	aboutSection.removeAttribute("id");
+	aboutSection.style.display = "block";
+
+	// Populate about data
+	populateElement(aboutSection, siteData.about.title, "title");
+	populateElement(aboutSection, siteData.about.subtitle, "subtitle");
+
+	// Populate description paragraphs
+	const descriptionContainer = aboutSection.querySelector('[data-field="description-container"]');
+	if (descriptionContainer) {
+		descriptionContainer.innerHTML = siteData.about.description
+			.map((para) => `<p style="margin: 0 0 16px 0; line-height: 1.6">${para}</p>`)
+			.join("");
+	}
+
+	// Populate technologies
+	const technologiesContainer = aboutSection.querySelector('[data-field="technologies"]');
+	if (technologiesContainer) {
+		technologiesContainer.innerHTML = siteData.about.technologies.map((tech) => createChip(tech)).join("");
+	}
+
+	// Populate interests
+	const interestsContainer = aboutSection.querySelector('[data-field="interests"]');
+	if (interestsContainer) {
+		interestsContainer.innerHTML = siteData.about.interests.map((interest) => createChip(interest)).join("");
+	}
+
+	aboutContainer.appendChild(aboutSection);
+}
+
+function populateProjectsSection() {
+	const projectsContainer = document.getElementById("projects-container");
+	if (!projectsContainer || !siteData.projects) return;
+
+	// Clone the projects template
+	const projectsSection = cloneTemplate("projects-template");
+	if (!projectsSection) return;
+
+	projectsSection.removeAttribute("id");
+	projectsSection.style.display = "block";
+
+	// Populate projects data
+	populateElement(projectsSection, siteData.projects.title, "title");
+	populateElement(projectsSection, siteData.projects.subtitle, "subtitle");
+
+	// Populate project items
+	const projectsListContainer = projectsSection.querySelector('[data-field="projects-container"]');
+	if (projectsListContainer && siteData.projects.items) {
+		projectsListContainer.innerHTML = "";
+
+		siteData.projects.items.forEach((project) => {
+			const projectItem = cloneTemplate("project-item-template");
+			if (!projectItem) return;
+
+			projectItem.removeAttribute("id");
+			projectItem.style.display = "block";
+
+			// Populate project data
+			populateElement(projectItem, project.title, "title");
+			populateElement(projectItem, project.description, "description");
+			populateElement(projectItem, `Key achievements: ${project.achievements}`, "achievements");
+
+			// Populate technologies
+			const technologiesContainer = projectItem.querySelector('[data-field="technologies"]');
+			if (technologiesContainer) {
+				technologiesContainer.innerHTML = project.technologies.map((tech) => createChip(tech)).join("");
+			}
+
+			projectsListContainer.appendChild(projectItem);
+		});
+	}
+
+	projectsContainer.appendChild(projectsSection);
+}
+
+function populateSideProjectsSection() {
+	const sideProjectsContainer = document.getElementById("side-projects-container");
+	if (!sideProjectsContainer || !siteData.sideProjects) return;
+
+	// Clone the side projects template
+	const sideProjectsSection = cloneTemplate("side-projects-template");
+	if (!sideProjectsSection) return;
+
+	sideProjectsSection.removeAttribute("id");
+	sideProjectsSection.style.display = "block";
+
+	// Populate side projects data
+	populateElement(sideProjectsSection, siteData.sideProjects.title, "title");
+	populateElement(sideProjectsSection, siteData.sideProjects.subtitle, "subtitle");
+
+	// Populate side project items
+	const sideProjectsListContainer = sideProjectsSection.querySelector('[data-field="side-projects-container"]');
+	if (sideProjectsListContainer && siteData.sideProjects.items) {
+		sideProjectsListContainer.innerHTML = "";
+
+		siteData.sideProjects.items.forEach((project) => {
+			const sideProjectItem = cloneTemplate("side-project-item-template");
+			if (!sideProjectItem) return;
+
+			sideProjectItem.removeAttribute("id");
+			sideProjectItem.style.display = "block";
+
+			// Populate side project data
+			populateElement(sideProjectItem, project.name, "name");
+			populateElement(sideProjectItem, project.year, "year");
+			populateElement(sideProjectItem, project.description, "description");
+
+			// Populate technologies
+			const technologiesContainer = sideProjectItem.querySelector('[data-field="technologies"]');
+			if (technologiesContainer) {
+				technologiesContainer.innerHTML = project.technologies.map((tech) => createChip(tech)).join("");
+			}
+
+			sideProjectsListContainer.appendChild(sideProjectItem);
+		});
+	}
+
+	sideProjectsContainer.appendChild(sideProjectsSection);
+}
+
+function populateExperienceSection() {
+	const experienceContainer = document.getElementById("experience-container");
+	if (!experienceContainer || !siteData.experience) return;
+
+	// Clone the experience template
+	const experienceSection = cloneTemplate("experience-template");
+	if (!experienceSection) return;
+
+	experienceSection.removeAttribute("id");
+	experienceSection.style.display = "block";
+
+	// Populate experience data
+	populateElement(experienceSection, siteData.experience.title, "title");
+	populateElement(experienceSection, siteData.experience.subtitle, "subtitle");
+
+	// Populate experience items
+	const experienceListContainer = experienceSection.querySelector('[data-field="experience-container"]');
+	if (experienceListContainer && siteData.experience.items) {
+		experienceListContainer.innerHTML = "";
+
+		siteData.experience.items.forEach((job) => {
+			const experienceItem = cloneTemplate("experience-item-template");
+			if (!experienceItem) return;
+
+			experienceItem.removeAttribute("id");
+			experienceItem.style.display = "block";
+
+			// Populate experience data
+			populateElement(experienceItem, job.role, "role");
+			populateElement(experienceItem, job.company, "company");
+			populateElement(experienceItem, job.period, "period");
+
+			// Populate technologies
+			const technologiesContainer = experienceItem.querySelector('[data-field="technologies"]');
+			if (technologiesContainer) {
+				technologiesContainer.innerHTML = job.technologies.map((tech) => createChip(tech)).join("");
+			}
+
+			// Populate achievements
+			const achievementsContainer = experienceItem.querySelector('[data-field="achievements"]');
+			if (achievementsContainer) {
+				achievementsContainer.innerHTML = job.achievements.map((achievement) => `<li>${achievement}</li>`).join("");
+			}
+
+			experienceListContainer.appendChild(experienceItem);
+		});
+	}
+
+	experienceContainer.appendChild(experienceSection);
 }
 
 // Content rendering functions
@@ -154,7 +424,7 @@ function renderPersonalInfo() {
 	const logo = document.querySelector(".logo");
 	if (logo) logo.textContent = personal.logo;
 
-	// Update header information
+	// Update name and title in header
 	const nameEl = document.querySelector(".personal-name");
 	const titleEl = document.querySelector(".personal-title");
 	if (nameEl) nameEl.textContent = personal.name;
@@ -169,7 +439,7 @@ function renderPersonalInfo() {
 	if (heroDescription) heroDescription.textContent = personal.description;
 	if (heroLocation) heroLocation.textContent = personal.location;
 
-	// Update CTA buttons
+	// Update contact information
 	const emailBtn = document.querySelector(".contact-email");
 	const resumeBtn = document.querySelector(".contact-resume");
 	if (emailBtn) {
@@ -211,224 +481,6 @@ function getSocialIcon(iconName) {
 		medium: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>`,
 	};
 	return icons[iconName] || "";
-}
-
-// Content population - create sections directly
-function populateSections() {
-	console.log("populateSections called, siteData available:", typeof siteData !== "undefined");
-
-	if (typeof siteData === "undefined") {
-		console.error("siteData is not available!");
-		return;
-	}
-
-	// Populate services section
-	const servicesContainer = document.getElementById("services-container");
-	if (servicesContainer && siteData.services) {
-		servicesContainer.innerHTML = `
-			<section class="card section-card">
-				<div class="section-header">
-					<div>
-						<div class="section-title">${siteData.services.title}</div>
-						<div class="section-subtitle">
-							${siteData.services.subtitle}
-						</div>
-					</div>
-					<div class="section-actions">
-						<a class="btn btn-primary" href="${siteData.services.topmateUrl}" target="_blank" rel="noopener">Book on Topmate</a>
-					</div>
-				</div>
-
-				<div class="section-content">
-					${siteData.services.offerings
-						.map(
-							(service) => `
-						<div class="service-item">
-							<div class="service-icon">
-								${service.icon}
-							</div>
-							<div class="service-content">
-								<h4 class="service-title">${service.title}</h4>
-								<div class="service-description">
-									${service.description}
-								</div>
-							</div>
-						</div>
-					`
-						)
-						.join("")}
-				</div>
-			</section>
-		`;
-	}
-
-	// Populate about section
-	const aboutContainer = document.getElementById("about-container");
-	if (aboutContainer && siteData.about) {
-		aboutContainer.innerHTML = `
-			<section class="card section-card">
-				<div class="section-header section-header--spaced">
-					<div>
-						<div class="section-title">${siteData.about.title}</div>
-						<div class="section-subtitle">
-							${siteData.about.subtitle}
-						</div>
-					</div>
-				</div>
-
-				<div class="about-grid">
-					<div>
-						${siteData.about.description.map((para) => `<p class="about-content">${para}</p>`).join("")}
-					</div>
-
-					<div class="about-sidebar">
-						<div class="skill-group">
-							<h4>Core Technologies</h4>
-							<div class="skill-tags">
-								${siteData.about.technologies.map((tech) => createChip(tech)).join("")}
-							</div>
-						</div>
-
-						<div class="skill-group">
-							<h4>Interests</h4>
-							<div class="skill-tags">
-								${siteData.about.interests.map((interest) => createChip(interest)).join("")}
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		`;
-	}
-
-	// Populate projects section
-	const projectsContainer = document.getElementById("projects-container");
-	if (projectsContainer && siteData.projects) {
-		projectsContainer.innerHTML = `
-			<section class="card section-card">
-				<div class="section-header section-header--spaced-lg">
-					<div>
-						<div class="section-title">${siteData.projects.title}</div>
-						<div class="section-subtitle">
-							${siteData.projects.subtitle}
-						</div>
-					</div>
-				</div>
-
-				<div class="projects-grid">
-					${siteData.projects.items
-						.map(
-							(project) => `
-						<div class="project">
-							<div class="project-header">
-								<h3 class="project-title">${project.title}</h3>
-								<div class="project-tech">
-									${project.technologies.map((tech) => createChip(tech)).join("")}
-								</div>
-							</div>
-							<p class="project-description">${project.description}</p>
-							<div class="project-achievements">
-								<strong>Key Results:</strong> ${project.achievements}
-							</div>
-						</div>
-					`
-						)
-						.join("")}
-				</div>
-			</section>
-		`;
-	}
-
-	// Populate side projects section
-	const sideProjectsContainer = document.getElementById("side-projects-container");
-	if (sideProjectsContainer && siteData.sideProjects) {
-		sideProjectsContainer.innerHTML = `
-			<section class="card section-card">
-				<div class="section-header section-header--spaced-md">
-					<div>
-						<div class="section-title">${siteData.sideProjects.title}</div>
-						<div class="section-subtitle">
-							${siteData.sideProjects.subtitle}
-						</div>
-					</div>
-				</div>
-				<div class="side-projects-grid">
-					${siteData.sideProjects.items
-						.map(
-							(project) => `
-						<div class="project">
-							<div class="side-project-header">
-								<h3 class="side-project-title">${project.name}</h3>
-								<div class="side-project-year">${project.year}</div>
-							</div>
-							<div class="side-project-tech">
-								${project.technologies.map((tech) => createChip(tech)).join("")}
-							</div>
-							<p class="side-project-description">
-								${project.description}
-							</p>
-						</div>
-					`
-						)
-						.join("")}
-				</div>
-			</section>
-		`;
-	}
-
-	// Populate experience section
-	const experienceContainer = document.getElementById("experience-container");
-	if (experienceContainer && siteData.experience) {
-		experienceContainer.innerHTML = `
-			<section class="card section-card">
-				<div class="section-header section-header--spaced-lg">
-					<div>
-						<div class="section-title">${siteData.experience.title}</div>
-						<div class="section-subtitle">
-							${siteData.experience.subtitle}
-						</div>
-					</div>
-				</div>
-
-				<div class="experience-timeline">
-					${siteData.experience.items
-						.map(
-							(job) => `
-						<div class="experience-item">
-							<div class="experience-header">
-								<div>
-									<h3 class="experience-role">${job.role}</h3>
-									<div class="experience-company">
-										${job.company}
-									</div>
-								</div>
-								<div class="experience-period">${job.period}</div>
-							</div>
-
-							<div class="experience-tech">
-								<div class="skill-tags">
-									${job.technologies.map((tech) => createChip(tech)).join("")}
-								</div>
-							</div>
-
-							<ul class="experience-achievements">
-								${job.achievements.map((achievement) => `<li>${achievement}</li>`).join("")}
-							</ul>
-						</div>
-					`
-						)
-						.join("")}
-				</div>
-			</section>
-		`;
-	}
-
-	console.log("All sections populated successfully");
-}
-
-// Helper function to create chip elements
-function createChip(text) {
-	return `<span class="tech-chip">${text}</span>`;
 }
 
 // Initialize the application
