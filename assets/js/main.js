@@ -432,9 +432,19 @@ function createChip(text) {
 }
 
 // Initialize the application
-function initializeApp() {
+async function initializeApp() {
 	console.log("initializeApp called");
-	console.log("siteData available:", typeof siteData !== "undefined");
+
+	// Load site data from JSON
+	const data = await ensureSiteDataLoaded();
+	if (!data) {
+		console.error("Failed to load site data");
+		return;
+	}
+
+	// Make data globally available
+	window.siteData = data;
+	console.log("siteData loaded and available globally");
 
 	initializeTheme();
 	setupModals();

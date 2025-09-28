@@ -1,0 +1,29 @@
+// prettier.config.js or .prettierrc.js
+module.exports = {
+	useTabs: true,
+	printWidth: 120,
+	bracketSameLine: true,
+	htmlWhitespaceSensitivity: "css",
+	singleAttributePerLine: false,
+	overrides: [
+		{
+			files: "*.html",
+			options: {
+				useTabs: true,
+				printWidth: 120,
+				bracketSameLine: true,
+				htmlWhitespaceSensitivity: "css",
+			},
+		},
+		{
+			files: ["*.js", "*.css"],
+			options: {
+				useTabs: true,
+				printWidth: 120,
+				semi: true,
+				singleQuote: false,
+				trailingComma: "es5",
+			},
+		},
+	],
+};
