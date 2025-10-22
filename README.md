@@ -16,13 +16,13 @@ I'm an engineering leader with **9.5 years of experience** in backend developmen
 - ⚡ Optimized performance and cut pre-release times from hours to minutes
 - 🎯 Focus: Building systems that are scalable, secure, and reliable
 - 📝 Passionate about mentoring developers and conducting mock interviews
-- 🌐 Visit my website: [devendrapratapsingh.com](https://devendrapratapsingh.com)
+- 🌐 Visit my website: [devendrapratap.xyz](https://devendrapratap.xyz)
 
 ## 🛠️ Tech Stack
 
 **Languages:** Java, Python, Go, Node.js
 
-**Frameworks:** Spring Boot, Django, Express
+**Frameworks:** Django, Express
 
 **Databases:** PostgreSQL, MySQL, Redis, MongoDB
 
