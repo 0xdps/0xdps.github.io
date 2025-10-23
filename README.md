@@ -16,7 +16,7 @@ I'm an engineering leader with **9.5 years of experience** in backend developmen
 - ⚡ Optimized performance and cut pre-release times from hours to minutes
 - 🎯 Focus: Building systems that are scalable, secure, and reliable
 - 📝 Passionate about mentoring developers and conducting mock interviews
-- 🌐 Visit my website: [devendrapratap.xyz](https://devendrapratap.xyz)
+- 🌐 Visit my website: [0xdps.xyz](https://0xdps.xyz)
 
 ## 🛠️ Tech Stack
 
@@ -40,7 +40,7 @@ I'm an engineering leader with **9.5 years of experience** in backend developmen
 
 ## 📫 Connect with Me
 
-- 🌐 Website: [devendrapratap.xyz](https://devendrapratap.xyz)
+- 🌐 Website: [0xdps.xyz](https://0xdps.xyz)
 - 📧 Email: dps.manit@gmail.com
 - 💼 LinkedIn: [devendrapratap02](https://linkedin.com/in/devendrapratap02)
 - 🐦 Twitter: [@_devendrapratap](https://twitter.com/_devendrapratap)
