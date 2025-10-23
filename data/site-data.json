@@ -45,7 +45,7 @@
   "services": {
     "title": "Services I offer on Topmate",
     "subtitle": "Hand-picked calls to help you move faster — technical, interview-focused, and quick doubt resolution.",
-    "topmateUrl": "https://topmate.io/devendrapratap02",
+    "topmateUrl": "https://topmate.io/0xdps",
     "offerings": [
       {
         "icon": "MI",
@@ -179,22 +179,22 @@
   "socialLinks": [
     {
       "name": "LinkedIn",
-      "url": "https://www.linkedin.com/in/devendrapratap",
+      "url": "https://www.linkedin.com/in/0xdps",
       "icon": "linkedin"
     },
     {
       "name": "GitHub",
-      "url": "https://github.com/devendrapratap02",
+      "url": "https://github.com/0xdps",
       "icon": "github"
     },
     {
       "name": "Twitter",
-      "url": "https://twitter.com/_devendrapratap",
+      "url": "https://twitter.com/0xdps",
       "icon": "twitter"
     },
     {
       "name": "Medium",
-      "url": "https://medium.com/@devendrapratap02",
+      "url": "https://medium.com/@0xdps",
       "icon": "medium"
     }
   ]
